@@ -1,0 +1,52 @@
+﻿CLASS,TIER,HP,S/M,SKL,SPD,DEF,RES,TOTAL,MOVE,WEAPONS,FEATURES,PROMOTIONS,DESCRIPTION
+Archer,1,70,40,50,35,30,25,250,4,Bows,,Marksman|Nomad,Archers are martial units that fight with bows
+Journeyman,1,75,55,40,30,30,20,250,4,Axes,,Brigand|Fighter|Pirate,Journeyman are martial units that fight with axes
+Soldier,1,80,60,35,25,30,20,250,4,Lances,,Cavalier|Knight|Pegasus Knight|Wyvern Knight,Soldiers are martial units that fight with lances
+Swordsman,1,70,40,40,45,30,25,250,4,Swords,,Cavalier|Mercenary|Myrmidon,Swordsman are martial units that fight with swords
+Mage,1,60,55,40,40,20,35,250,4,Anima,,Sage|Troubadour,Mages are magic units that fight with anima magic
+Monk,1,60,40,50,35,20,45,250,4,Light,,Bishop|Diviner,Monks are magic units that fight with light magic
+Shaman,1,60,55,40,35,20,40,250,4,Dark,,Druid|Summoner,Shamans are magic units that fight with dark magic
+Cleric,1,60,35,40,35,20,60,250,4,Staves,,Bishop|Troubadour,Clerics are magic units that uses staves
+Marksman,2,20,20,20,20,10,10,100,5,Bows,,Sniper|Warrior,Marksman are dedicated to their skill with a bow
+Nomad,2,10,10,20,20,10,10,80,6,Bows,Mount (Sturdy)| Horseback,Dracoknight|Falcoknight|Ranger,Nomads have become proficient using a bow while on horseback
+Brigand,2,35,25,5,20,5,5,95,5,Axes,Climber,Berserker|Warrior,Brigands are axe users who have trained in rough terrain to become tough and agile
+Fighter,2,30,25,10,15,10,10,100,5,Axes,,Hero|Warrior,Fighters are axe users who have trained to become strong and durable
+Pirate,2,20,20,20,20,10,5,95,5,Axes,Swimmer,Berserker|Corsair,Pirates are axe users who have trained on the seas and are accustomed to a variety of challenges
+Cavalier,2,15,15,15,10,15,10,80,6,Lances| Swords,Mount| Horseback,Great Knight|Paladin,Caveliers have learned to wield swords and lances while riding horseback
+Knight,2,25,20,10,10,50,5,120,4,Lances,Armoured,General|Great Knight,Knights are lance users that have trained their bodies to easily carry the weight of the heavy armour they wear
+Pegasus Knight,2,5,5,15,15,5,25,70,7,Lances,Mount (Flying),Falcoknight|Pegasus Lord,Pegasus knights have learned to wield lances while gracefully flying on Pegasi
+Wyvern Knight,2,15,20,5,10,15,5,70,7,Lances,Mount (Flying)| Dragon,Dracoknight|Wyvern Lord,Wyvern knights have become deadly wyvern riding lance users
+Mercenary,2,25,20,15,15,15,10,100,5,Swords,,Hero|Ranger|Rogue,Mercenaries train their bodies to become formidable sword users
+Myrmidon,2,15,10,30,30,10,5,100,5,Swords,,Assassin|Swordmaster|Rogue,Myrmidons have honed their skill with their swords to a higher level than most
+Sage,2,20,15,20,20,10,15,100,5,Anima| Staves,,Archdruid|Archsage|Sorcerer,Sages continue their study of anima magic while learning to use staves
+Troubadour,2,10,5,15,20,10,20,80,6,Anima| Staves,Mount| Horseback,Mage Knight|Valkyrie,Troubadours have learned to use anima magic and staves while on horseback
+Bishop,2,15,20,25,15,5,20,100,5,Light| Staves,,Archbishop|Archsage|Cardinal,Bishops spend much of their time practicing their use of light magic and staves
+Diviner,2,15,25,25,20,5,10,100,5,Light,,Cardinal|Oracle,Diviners strive to excel in their skill with light magic
+Druid,2,30,20,5,5,15,25,100,5,Dark| Staves,,Archbishop|Archdruid|Dark Druid,Druids continue their study of dark magic while learning to use staves
+Summoner,2,20,25,20,20,5,10,100,5,Dark,,Dark Druid|Necromancer,Summoners strive to excel in their skill with dark magic
+Berserker,3,5,10,10,10,0,0,35,6,Axes,Climber| Swimmer| Critical Hitter,,Berserkers have mastered the use of axes and delight in the chance to test their immense skill in any terrain
+Corsair,3,10,5,15,15,5,0,50,6,Axes| Swords,,,"Corsairs are swift, skillful, expert axe users who are also practiced with a sword"
+Dracoknight,3,10,10,5,0,10,0,35,9,Bows|Lances,Mount (Flying)| Dragon,,Dracoknights have become deadly with both lances and bows while flying on the backs of wyvern
+Falcoknight,3,5,0,10,10,0,10,35,9,Bows|Lances,Mount (Flying),,Falcoknights have become experts with both lances and bows while flying on the backs of pegasi
+General,3,10,10,5,5,20,5,55,5,Lances,Armoured,,Generals have mastered their ability to wield powerful lances and imprentrable armour
+Great Knight,3,10,10,0,5,10,5,40,6,Axes| Lances,Mount| Horseback| Armoured,,"Great knights wear heavy armour, on armoured horseback, wielding both lances and axes"
+Hero,3,10,10,10,10,10,0,50,6,Axes| Swords,Focus,,Heros have become all-around experts in their use of both axes and swords
+Paladin,3,10,5,10,10,10,5,50,8,Axes|Lances| Swords,Mount,,"Paladins have learned to wield axes, lances, and swords, while riding on horseback"
+Pegasus Lord,3,5,0,5,10,0,15,35,9,Lances| Swords,Mount (Flying),,Pegasus Lords have become experts with both lances and swords while flying on the backs of pegasi
+Ranger,3,10,5,10,10,5,0,40,8,Bows| Swords,Mount (Sturdy)| Horseback,,Rangers wield bows and swords to hunt while their horses have grown accustom to the dense forests they travel
+Assassin,3,0,5,20,15,0,0,40,6,Swords,Silence,,Assassins are masters of the sword who specialize in fatal blows
+Swordmaster,3,0,0,20,20,0,0,40,6,Swords,Critical Hitter,,Swordmasters have pushed their skills with a sword beyond all others
+Rogue,3,0,0,15,35,0,0,50,6,Swords,Steal,,Rogues are masters of the sword who value being quick and quiet while the empty their enemies pockets
+Sniper,3,5,5,10,15,5,5,45,6,Bows,Sure Strike,,Snipers are masters of the bow whose accuracy is matched by no other
+Warrior,3,10,10,10,10,5,0,45,6,Axes| Bows,Climber,,Warriors are resilient and embrace rough terrain while fighting with axes and bows
+Wyvern Lord,3,10,5,0,10,10,0,35,9,Axes|Lances,Mount (Flying)| Dragon,,Wyvern Lords have become deadly with both lances and axes while flying on the backs of wyvern
+Archdruid,3,10,10,5,5,10,10,50,6,Anima| Dark| Staves,,,"Ardruids are experts in anima magic, dark magic, and staves"
+Archsage,3,5,10,10,10,5,10,50,6,Anima| Light| Staves,,,"Archsages are experts in anima magic, light magic, and staves"
+Archbishop,3,5,10,10,10,0,15,50,6,Dark| Light| Staves,,,"Archbishops are experts in dark magic, light magic, and staves"
+Mage Knight,3,10,5,5,10,5,5,40,8,Anima| Dark| Staves,Mount| Horseback,,Mage Knights swiftly ride on horseback while wielding anima and dark magic
+Valkyrie,3,5,5,10,10,0,10,40,8,Anima| Staves,Mount| Horseback,,Valkeries are horseback riders that are experts in anima magic and staves
+Cardinal,3,10,5,10,5,10,10,50,6,Light| Staves,Focus,,Cardinals are experts in light magic and staves
+Oracle,3,5,10,15,10,0,5,45,6,Light,Sure Strike,,Oracles' faith have led them to the mastery light magic
+Dark Druid,3,15,10,10,10,5,5,55,5,Dark| Staves,,,Dark Druids are experts in dark magic and staves
+Necromancer,3,5,20,10,5,0,0,40,6,Dark,Summon,,Necromancers dedication to the dark arts has helped them master dark magic
+Sorcerer,3,5,10,15,10,0,0,40,6,Anima| Staves,Critical Hitter,,Sorcers have dedicated themselves to become experts in anima magic and staves
