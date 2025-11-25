@@ -30,6 +30,7 @@ namespace FERD
         {
             groupBox_characterDetails.Text = $"{_character.Name} - Level {_character.Level}";
             numberBox_exp.Value = _character.Experience;
+            textBox_features.Text = _character.Features;
             _character.initClassDropdowns(comboBox_class1, comboBox_class2, comboBox_class3);
             initStats();
             initCombatStats();
@@ -125,30 +126,6 @@ namespace FERD
             table_stats.AddText(_character.Stats.DEF, 1, 4);
             table_stats.AddText(_character.Stats.RES, 1, 5);
             table_stats.AddText(_character.MOV, 1, 6);
-        }
-
-        private void comboBox_class1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            comboBox_class2.initClassDropdown(comboBox_class1.getSubclasses());
-
-            class_changed();
-        }
-
-        private void comboBox_class2_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            comboBox_class3.initClassDropdown(comboBox_class2.getSubclasses());
-
-            class_changed();
-        }
-
-        private void comboBox_class3_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            class_changed();
-        }
-
-        private void class_changed()
-        {
-            _character.recalculateGrowthRates();
         }
 
         private void button_levelUp_Click(object sender, EventArgs e)

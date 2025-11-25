@@ -10,7 +10,22 @@ namespace FERD.Models
         public int SPD { get; set; }
         public int DEF { get; set; }
         public int RES { get; set; }
+
+        [JsonIgnore]
         public int Length { get { return 6; } }
+
+        public Stats Copy()
+        {
+            return new Stats
+            {
+                HP = this.HP,
+                SM = this.SM,
+                SKL = this.SKL,
+                SPD = this.SPD,
+                DEF = this.DEF,
+                RES = this.RES
+            };
+        }
 
         [JsonIgnore]
         public int this[string key]

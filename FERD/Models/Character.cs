@@ -8,14 +8,58 @@ namespace FERD.Models
     public class Character
     {
         private Stats _totalGrowthRates;
+        private string _class1 = Classes.Empty.Name;
+        private string _class2 = Classes.Empty.Name;
+        private string _class3 = Classes.Empty.Name;
         public string Name { get; set; } = "Mark";
         public int Level { get; set; } = 0;
         public int Experience { get; set; } = 0;
         public Stats Stats { get; set; } = new Stats();
         public Stats BaseGrowthRates { get; set; } = new Stats();
-        public ClassType Class1 { get; set; } = Classes.Null;
-        public ClassType Class2 { get; set; } = Classes.Null;
-        public ClassType Class3 { get; set; } = Classes.Null;
+
+        [JsonIgnore]
+        public ClassType Class1
+        {
+            get
+            {
+                return _class1.Equals(Classes.Empty.Name) ? 
+                    Classes.Empty : Classes.ClassMap[_class1];
+            }
+            set
+            {
+                _class1 = value.Name;
+            }
+        }
+
+        [JsonIgnore]
+        public ClassType Class2
+        {
+            get
+            {
+                return _class2.Equals(Classes.Empty.Name) ?
+                    Classes.Empty : Classes.ClassMap[_class2];
+            }
+            set
+            {
+                _class2 = value.Name;
+            }
+        }
+
+        [JsonIgnore]
+        public ClassType Class3
+        {
+            get
+            {
+                return _class3.Equals(Classes.Empty.Name) ?
+                    Classes.Empty : Classes.ClassMap[_class3];
+            }
+            set
+            {
+                _class3 = value.Name;
+            }
+        }
+
+        [JsonIgnore]
         public CombatStats CombatStats
         {
             get
@@ -57,6 +101,21 @@ namespace FERD.Models
             get
             {
                 return Math.Max(Math.Max(Class1.Move, Class2.Move), Class3.Move);
+            }
+        }
+
+        [JsonIgnore]
+        public string Features
+        {
+            get
+            {
+                string feats = "";
+                IEnumerable<string> features = this.Class1.Features.Union(this.Class2.Features).Union(this.Class3.Features);
+                foreach (string feature in features)
+                {
+                    feats += $"{feature}{Environment.NewLine}";
+                }
+                return feats;
             }
         }
 

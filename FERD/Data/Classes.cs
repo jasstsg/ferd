@@ -5,6 +5,12 @@ namespace FERD.Data
 {
     public static class Classes
     {
+        public static class PromotionLevel
+        {
+            public static int TIER2 = 4;
+            public static int TIER3 = 20;
+        }
+
         // Classes CSV Header Index
         public static class CCHI
         {
@@ -55,9 +61,9 @@ namespace FERD.Data
                                     RES = int.Parse(rowSplit[CCHI.RES])
                                 },
                                 Move = int.Parse(rowSplit[CCHI.MOVE]),
-                                Subclasses = rowSplit[CCHI.PROMOTIONS].Replace(" ", "").Split('|'),
-                                Weapons = rowSplit[CCHI.WEAPONS].Replace(" ", "").Split('|'),
-                                Features = rowSplit[CCHI.FEATURES].Replace(" ", "").Split('|'),
+                                Subclasses = rowSplit[CCHI.PROMOTIONS].ToCleanArray(),
+                                Weapons = rowSplit[CCHI.WEAPONS].ToCleanArray(),
+                                Features = rowSplit[CCHI.FEATURES].ToCleanArray(),
                                 Description = rowSplit[CCHI.DESC]
                             };
 
@@ -70,13 +76,23 @@ namespace FERD.Data
             }
         }
 
-        public static List<ClassType> None => new List<ClassType> { Null };
+        private static string[] ToCleanArray(this string str)
+        {
+            List<string> list = new List<string>();
+            foreach (string s in str.Split('|'))
+            {
+                list.Add(s.Trim());
+            }
+            return list.ToArray();
+        }
+
+        public static List<ClassType> None => new List<ClassType> { Empty };
         public static List<ClassType> Tier1 => ClassMap.Values.Where(c => c.Tier == 1).ToList();
         public static List<ClassType> Tier2 => ClassMap.Values.Where(c => c.Tier == 2).ToList();
         public static List<ClassType> Tier3 => ClassMap.Values.Where(c => c.Tier == 3).ToList();
 
 
-        public static ClassType Null => new ClassType()
+        public static ClassType Empty => new ClassType()
         {
             Name = " - ",
             Tier = 0,

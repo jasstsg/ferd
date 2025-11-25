@@ -1,6 +1,6 @@
 ﻿namespace FERD
 {
-    partial class NewCharacterForm
+    partial class GenerateNewCharacterForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,9 @@
         private void InitializeComponent()
         {
             textBox_Name = new TextBox();
-            comboBox_class = new ComboBox();
+            comboBox_class1 = new ComboBox();
+            comboBox_class2 = new ComboBox();
+            comboBox_class3 = new ComboBox();
             table_stats = new TableLayoutPanel();
             label2 = new Label();
             label_statsTotal = new Label();
@@ -45,8 +47,10 @@
             label22 = new Label();
             numberBox_hp = new NumericUpDown();
             label15 = new Label();
-            button_createCharacter = new Button();
-            textBox_classDescription = new TextBox();
+            button_useStatsAndGenerate = new Button();
+            button_randomStatsAndGenerate = new Button();
+            label1 = new Label();
+            numberBox_level = new NumericUpDown();
             table_stats.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numberBox_res).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numberBox_def).BeginInit();
@@ -54,25 +58,44 @@
             ((System.ComponentModel.ISupportInitialize)numberBox_skl).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numberBox_sm).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numberBox_hp).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numberBox_level).BeginInit();
             SuspendLayout();
             // 
             // textBox_Name
             // 
-            textBox_Name.Location = new Point(16, 17);
+            textBox_Name.Location = new Point(12, 12);
             textBox_Name.Name = "textBox_Name";
             textBox_Name.PlaceholderText = "Character Name";
             textBox_Name.Size = new Size(137, 23);
-            textBox_Name.TabIndex = 0;
+            textBox_Name.TabIndex = 1;
             textBox_Name.Text = "Mark";
             // 
-            // comboBox_class
+            // comboBox_class1
             // 
-            comboBox_class.FormattingEnabled = true;
-            comboBox_class.Location = new Point(16, 46);
-            comboBox_class.Name = "comboBox_class";
-            comboBox_class.Size = new Size(137, 23);
-            comboBox_class.TabIndex = 1;
-            comboBox_class.SelectedIndexChanged += comboBox_class_SelectedIndexChanged;
+            comboBox_class1.FormattingEnabled = true;
+            comboBox_class1.Location = new Point(12, 41);
+            comboBox_class1.Name = "comboBox_class1";
+            comboBox_class1.Size = new Size(137, 23);
+            comboBox_class1.TabIndex = 2;
+            comboBox_class1.SelectedIndexChanged += comboBox_class1_SelectedIndexChanged;
+            // 
+            // comboBox_class2
+            // 
+            comboBox_class2.FormattingEnabled = true;
+            comboBox_class2.Location = new Point(12, 70);
+            comboBox_class2.Name = "comboBox_class2";
+            comboBox_class2.Size = new Size(137, 23);
+            comboBox_class2.TabIndex = 3;
+            comboBox_class2.SelectedIndexChanged += comboBox_class2_SelectedIndexChanged;
+            // 
+            // comboBox_class3
+            // 
+            comboBox_class3.FormattingEnabled = true;
+            comboBox_class3.Location = new Point(12, 99);
+            comboBox_class3.Name = "comboBox_class3";
+            comboBox_class3.Size = new Size(137, 23);
+            comboBox_class3.TabIndex = 4;
+            comboBox_class3.SelectedIndexChanged += comboBox_class3_SelectedIndexChanged;
             // 
             // table_stats
             // 
@@ -93,7 +116,7 @@
             table_stats.Controls.Add(label22, 0, 5);
             table_stats.Controls.Add(numberBox_hp, 1, 0);
             table_stats.Controls.Add(label15, 0, 0);
-            table_stats.Location = new Point(159, 17);
+            table_stats.Location = new Point(155, 41);
             table_stats.Name = "table_stats";
             table_stats.RowCount = 7;
             table_stats.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
@@ -104,7 +127,7 @@
             table_stats.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
             table_stats.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
             table_stats.Size = new Size(137, 213);
-            table_stats.TabIndex = 30;
+            table_stats.TabIndex = 31;
             // 
             // label2
             // 
@@ -133,7 +156,6 @@
             numberBox_res.Name = "numberBox_res";
             numberBox_res.Size = new Size(63, 23);
             numberBox_res.TabIndex = 36;
-            numberBox_res.ValueChanged += numberBox_res_changed;
             // 
             // numberBox_def
             // 
@@ -142,7 +164,6 @@
             numberBox_def.Name = "numberBox_def";
             numberBox_def.Size = new Size(63, 23);
             numberBox_def.TabIndex = 35;
-            numberBox_def.ValueChanged += numberBox_def_changed;
             // 
             // numberBox_spd
             // 
@@ -151,7 +172,6 @@
             numberBox_spd.Name = "numberBox_spd";
             numberBox_spd.Size = new Size(63, 23);
             numberBox_spd.TabIndex = 34;
-            numberBox_spd.ValueChanged += numberBox_spd_changed;
             // 
             // numberBox_skl
             // 
@@ -160,7 +180,6 @@
             numberBox_skl.Name = "numberBox_skl";
             numberBox_skl.Size = new Size(63, 23);
             numberBox_skl.TabIndex = 33;
-            numberBox_skl.ValueChanged += numberBox_skl_changed;
             // 
             // numberBox_sm
             // 
@@ -169,7 +188,6 @@
             numberBox_sm.Name = "numberBox_sm";
             numberBox_sm.Size = new Size(63, 23);
             numberBox_sm.TabIndex = 32;
-            numberBox_sm.ValueChanged += numberBox_sm_changed;
             // 
             // label18
             // 
@@ -229,7 +247,6 @@
             numberBox_hp.Size = new Size(63, 23);
             numberBox_hp.TabIndex = 31;
             numberBox_hp.Value = new decimal(new int[] { 15, 0, 0, 0 });
-            numberBox_hp.ValueChanged += numberBox_hp_changed;
             // 
             // label15
             // 
@@ -241,38 +258,60 @@
             label15.TabIndex = 25;
             label15.Text = "HP";
             // 
-            // button_createCharacter
+            // button_useStatsAndGenerate
             // 
-            button_createCharacter.Location = new Point(16, 198);
-            button_createCharacter.Name = "button_createCharacter";
-            button_createCharacter.Size = new Size(137, 30);
-            button_createCharacter.TabIndex = 31;
-            button_createCharacter.Text = "Create Character";
-            button_createCharacter.UseVisualStyleBackColor = true;
-            button_createCharacter.Click += button_createCharacter_Click;
+            button_useStatsAndGenerate.Location = new Point(12, 129);
+            button_useStatsAndGenerate.Name = "button_useStatsAndGenerate";
+            button_useStatsAndGenerate.Size = new Size(137, 60);
+            button_useStatsAndGenerate.TabIndex = 32;
+            button_useStatsAndGenerate.Text = "Current stats and generate";
+            button_useStatsAndGenerate.UseVisualStyleBackColor = true;
+            button_useStatsAndGenerate.Click += button_useStatsAndGenerate_Click;
             // 
-            // textBox_classDescription
+            // button_randomStatsAndGenerate
             // 
-            textBox_classDescription.Location = new Point(16, 75);
-            textBox_classDescription.Multiline = true;
-            textBox_classDescription.Name = "textBox_classDescription";
-            textBox_classDescription.ReadOnly = true;
-            textBox_classDescription.Size = new Size(137, 117);
-            textBox_classDescription.TabIndex = 32;
-            textBox_classDescription.Text = "Selected class description";
+            button_randomStatsAndGenerate.Location = new Point(12, 194);
+            button_randomStatsAndGenerate.Name = "button_randomStatsAndGenerate";
+            button_randomStatsAndGenerate.Size = new Size(137, 60);
+            button_randomStatsAndGenerate.TabIndex = 33;
+            button_randomStatsAndGenerate.Text = "Randomize stats and generate";
+            button_randomStatsAndGenerate.UseVisualStyleBackColor = true;
+            button_randomStatsAndGenerate.Click += button_randomStatsAndGenerate_Click;
             // 
-            // NewCharacterForm
+            // label1
+            // 
+            label1.Anchor = AnchorStyles.None;
+            label1.AutoSize = true;
+            label1.Location = new Point(174, 15);
+            label1.Name = "label1";
+            label1.Size = new Size(38, 15);
+            label1.TabIndex = 34;
+            label1.Text = "LEVEL";
+            // 
+            // numberBox_level
+            // 
+            numberBox_level.Location = new Point(226, 12);
+            numberBox_level.Maximum = new decimal(new int[] { 40, 0, 0, 0 });
+            numberBox_level.Name = "numberBox_level";
+            numberBox_level.Size = new Size(63, 23);
+            numberBox_level.TabIndex = 35;
+            // 
+            // GenerateNewCharacterForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(304, 238);
-            Controls.Add(textBox_classDescription);
-            Controls.Add(button_createCharacter);
+            ClientSize = new Size(304, 265);
+            Controls.Add(numberBox_level);
+            Controls.Add(label1);
+            Controls.Add(button_randomStatsAndGenerate);
+            Controls.Add(button_useStatsAndGenerate);
             Controls.Add(table_stats);
-            Controls.Add(comboBox_class);
+            Controls.Add(comboBox_class3);
+            Controls.Add(comboBox_class2);
+            Controls.Add(comboBox_class1);
             Controls.Add(textBox_Name);
-            Name = "NewCharacterForm";
-            Text = "Create your new character!";
+            Name = "GenerateNewCharacterForm";
+            Text = "Auto generate a character";
             table_stats.ResumeLayout(false);
             table_stats.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)numberBox_res).EndInit();
@@ -281,6 +320,7 @@
             ((System.ComponentModel.ISupportInitialize)numberBox_skl).EndInit();
             ((System.ComponentModel.ISupportInitialize)numberBox_sm).EndInit();
             ((System.ComponentModel.ISupportInitialize)numberBox_hp).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numberBox_level).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -288,7 +328,9 @@
         #endregion
 
         private TextBox textBox_Name;
-        private ComboBox comboBox_class;
+        private ComboBox comboBox_class1;
+        private ComboBox comboBox_class2;
+        private ComboBox comboBox_class3;
         private TableLayoutPanel table_stats;
         private Label label2;
         private Label label_statsTotal;
@@ -302,9 +344,11 @@
         private Label label20;
         private Label label21;
         private Label label22;
-        private Label label15;
         private NumericUpDown numberBox_hp;
-        private Button button_createCharacter;
-        private TextBox textBox_classDescription;
+        private Label label15;
+        private Button button_useStatsAndGenerate;
+        private Button button_randomStatsAndGenerate;
+        private Label label1;
+        private NumericUpDown numberBox_level;
     }
 }

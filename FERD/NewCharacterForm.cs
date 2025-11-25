@@ -5,73 +5,25 @@ using FERD.Models;
 
 namespace FERD
 {
-    public partial class NewCharacterForm : Form
-    {
-        private int TOTAL_LIMIT = 50;
-        private int hp { get; set; } = 15;
-        private int sm { get; set; } = 0;
-        private int skl { get; set; } = 0;
-        private int spd { get; set; } = 0;
-        private int def { get; set; } = 0;
-        private int res { get; set; } = 0;
-        private int total { get; set; } = 15;
 
-        public NewCharacterForm()
+    public partial class NewCharacterForm : StatSelectionFormBase
+    {
+        private MainForm _mainForm;
+
+        public NewCharacterForm(MainForm mainForm)
         {
             InitializeComponent();
+            this._mainForm = mainForm;
+            this.labelStatsTotal = label_statsTotal;
+            this.numberBoxHp = numberBox_hp;
+            this.numberBoxSm = numberBox_sm;
+            this.numberBoxSkl = numberBox_skl;
+            this.numberBoxSpd = numberBox_spd;
+            this.numberBoxDef = numberBox_def;
+            this.numberBoxRes = numberBox_res;
             comboBox_class.initClassDropdown(Classes.Tier1, true);
         }
 
-        public int updateStatValue(NumericUpDown numberBox, int previousValue)
-        {
-            // Get the change in value
-            int delta = (int)numberBox.Value - previousValue;
-
-            // Get the new total
-            int newTotal = total + delta;
-
-            // If the new total is greater than the limit, set the value back to previous value and return it
-            if (newTotal > TOTAL_LIMIT)
-            {
-                numberBox.Value = previousValue;
-                return previousValue;
-            }
-
-            // Otherwise record the new total and return the new value
-            total = newTotal;
-            label_statsTotal.Text = $"{total} / 50";
-            return previousValue + delta;
-        }
-
-        public void numberBox_hp_changed(object sender, EventArgs e)
-        {
-            hp = updateStatValue(numberBox_hp, hp);
-        }
-
-        public void numberBox_sm_changed(object sender, EventArgs e)
-        {
-            sm = updateStatValue(numberBox_sm, sm);
-        }
-
-        public void numberBox_skl_changed(object sender, EventArgs e)
-        {
-            skl = updateStatValue(numberBox_skl, skl);
-        }
-
-        public void numberBox_spd_changed(object sender, EventArgs e)
-        {
-            spd = updateStatValue(numberBox_spd, spd);
-        }
-
-        public void numberBox_def_changed(object sender, EventArgs e)
-        {
-            def = updateStatValue(numberBox_def, def);
-        }
-
-        public void numberBox_res_changed(object sender, EventArgs e)
-        {
-            res = updateStatValue(numberBox_res, res);
-        }
 
         private void button_createCharacter_Click(object sender, EventArgs e)
         {
@@ -99,10 +51,13 @@ namespace FERD
             };
 
             // Try to save the character
-            if (!c.save(true))
+            if (!c.save())
             {
                 return;
             }
+
+            // Refresh the character list on the main form
+            _mainForm.loadCharacters();
 
             // Open the character form with the new character
             CharacterForm cf = new CharacterForm(c);
@@ -112,10 +67,6 @@ namespace FERD
             this.Close();
         }
 
-        private void comboBox_class_MouseHover(object sender, EventArgs e)
-        {
-
-        }
 
         private void comboBox_class_SelectedIndexChanged(object sender, EventArgs e)
         {

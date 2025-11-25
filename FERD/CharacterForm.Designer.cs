@@ -98,11 +98,13 @@
             tableLayoutPanel2 = new TableLayoutPanel();
             label13 = new Label();
             label14 = new Label();
+            textBox_features = new TextBox();
             groupBox_characterDetails.SuspendLayout();
             groupBox8.SuspendLayout();
             groupBox5.SuspendLayout();
             table_combatStats.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numberBox_exp).BeginInit();
+            groupBox7.SuspendLayout();
             groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             groupBox2.SuspendLayout();
@@ -519,6 +521,7 @@
             // 
             // groupBox7
             // 
+            groupBox7.Controls.Add(textBox_features);
             groupBox7.Location = new Point(5, 378);
             groupBox7.Name = "groupBox7";
             groupBox7.Size = new Size(130, 115);
@@ -545,7 +548,6 @@
             comboBox_class3.Name = "comboBox_class3";
             comboBox_class3.Size = new Size(151, 23);
             comboBox_class3.TabIndex = 0;
-            comboBox_class3.SelectedIndexChanged += comboBox_class3_SelectedIndexChanged;
             // 
             // comboBox_class2
             // 
@@ -554,7 +556,6 @@
             comboBox_class2.Name = "comboBox_class2";
             comboBox_class2.Size = new Size(151, 23);
             comboBox_class2.TabIndex = 0;
-            comboBox_class2.SelectedIndexChanged += comboBox_class2_SelectedIndexChanged;
             // 
             // comboBox_class1
             // 
@@ -563,7 +564,6 @@
             comboBox_class1.Name = "comboBox_class1";
             comboBox_class1.Size = new Size(151, 23);
             comboBox_class1.TabIndex = 0;
-            comboBox_class1.SelectedIndexChanged += comboBox_class1_SelectedIndexChanged;
             // 
             // pictureBox1
             // 
@@ -899,6 +899,15 @@
             label14.TabIndex = 26;
             label14.Text = "S/M";
             // 
+            // textBox_features
+            // 
+            textBox_features.Location = new Point(7, 18);
+            textBox_features.Multiline = true;
+            textBox_features.Name = "textBox_features";
+            textBox_features.ReadOnly = true;
+            textBox_features.Size = new Size(117, 91);
+            textBox_features.TabIndex = 0;
+            // 
             // CharacterForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -914,6 +923,8 @@
             table_combatStats.ResumeLayout(false);
             table_combatStats.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)numberBox_exp).EndInit();
+            groupBox7.ResumeLayout(false);
+            groupBox7.PerformLayout();
             groupBox4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             groupBox2.ResumeLayout(false);
@@ -1036,5 +1047,6 @@
         private Button button_selectInv1;
         private Label label1;
         private Label label9;
+        private TextBox textBox_features;
     }
 }

@@ -1,12 +1,11 @@
-﻿using FERD.Helpers;
+﻿using FERD.Data;
+using FERD.Helpers;
 using FERD.Models;
 
 namespace FERD
 {
     public partial class LevelUpForm : Form
     {
-        private const int TIER2_PROMOTION_LEVEL = 4;
-        private const int TIER3_PROMOTION_LEVEL = 20;
         private Character _character;
         private CharacterForm _characterForm;
         public LevelUpForm(Character c, CharacterForm cf)
@@ -23,13 +22,13 @@ namespace FERD
             label_levelUpText.Text = $"Level {_character.Level} -> {_character.Level + 1} ";
             _character.initClassDropdowns(comboBox_class1, comboBox_class2, comboBox_class3);
 
-            if (_character.Level == TIER2_PROMOTION_LEVEL)
+            if (_character.Level == Classes.PromotionLevel.TIER2)
             {
                 comboBox_class2.Enabled = true;
                 comboBox_class2.ForeColor = Color.Black;
                 label_levelUpText.Text += "and promote to tier 2";
             }
-            else if (_character.Level == TIER3_PROMOTION_LEVEL)
+            else if (_character.Level == Classes.PromotionLevel.TIER3)
             {
                 comboBox_class3.Enabled = true;
                 comboBox_class3.ForeColor = Color.Black;
@@ -59,7 +58,7 @@ namespace FERD
             for (int row = 0; row < _character.TotalGrowthRates.Length; row++)
             {
                 await Task.Delay(250);
-                setStatColor(row, rollStat(row) ? Color.Goldenrod : Color.DarkGray);
+                setStatColor(row, _character.rollStat(row) ? Color.Goldenrod : Color.DarkGray);
                 initStats();
             }
 
@@ -68,34 +67,6 @@ namespace FERD
             button_finishLevelUp.ForeColor = Color.Black;
         }
 
-        private bool rollStat(int row)
-        {
-            // If the stat is not HP and is at 40, then prevent it from getting any higher
-            if (row != 0 && _character.Stats[row] >= 40)
-            {
-                return false;
-            }
-
-            int growthRate = _character.TotalGrowthRates[row];
-
-            // If the growth rate is more than 100%, get the guaranteed increase
-            int statIncrease = growthRate / 100;
-
-            // If the growth rate is more than 100%, get the ramainder for the non-guaranteed increase chance
-            int statIncreaseChance = growthRate % 100;
-
-            // If the random int is less or equal to the increase change, increment the statIncrease
-            if (new Random().Next(0, 101) <= statIncreaseChance)
-            {
-                statIncrease++;
-            }
-
-            // Increase the character's stat
-            _character.Stats[row] += statIncrease;
-
-            // Return success status
-            return statIncrease > 0;
-        }
         private void setStatColor(int row, Color color)
         {
             Control label = table_stats.GetControlFromPosition(0, row);
@@ -107,7 +78,7 @@ namespace FERD
         }
         private void comboBox_class2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (_character.Level == TIER2_PROMOTION_LEVEL)
+            if (_character.Level == Classes.PromotionLevel.TIER2)
             {
                 textBox_classDescription.Text = comboBox_class2.GetSelectedClass().Description;
             }
@@ -115,7 +86,7 @@ namespace FERD
 
         private void comboBox_class3_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (_character.Level == TIER3_PROMOTION_LEVEL)
+            if (_character.Level == Classes.PromotionLevel.TIER3)
             {
                 textBox_classDescription.Text = comboBox_class3.GetSelectedClass().Description;
             }

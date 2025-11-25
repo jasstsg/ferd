@@ -8,7 +8,7 @@ namespace FERD
     {
         private string _characterDir
         {
-            get 
+            get
             {
                 string dir = Properties.Settings.Default.CharacterDirectory;
                 return !string.IsNullOrEmpty(dir) ? dir : Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
@@ -35,7 +35,7 @@ namespace FERD
             _ = Classes.ClassMap;
         }
 
-        private void loadCharacters()
+        public void loadCharacters()
         {
             listBox_characters.Items.Clear();
             string[] filepaths = Directory.GetFiles(_characterDir, "*.json");
@@ -67,7 +67,7 @@ namespace FERD
 
         private void button_create_Click(object sender, EventArgs e)
         {
-            NewCharacterForm ncf = new NewCharacterForm();
+            NewCharacterForm ncf = new NewCharacterForm(this);
             ncf.Show();
         }
 
@@ -83,6 +83,30 @@ namespace FERD
         private void button_OpenPromotionTree_Click(object sender, EventArgs e)
         {
             PromotionTreeForm f = new PromotionTreeForm();
+            f.Show();
+        }
+
+        private void button_deleteCharacter_Click(object sender, EventArgs e)
+        {
+            if (listBox_characters.Items.Count < 1)
+            {
+                return;
+            }
+
+            string filepath = _characterFilePaths[(string)listBox_characters.SelectedItem];
+            DialogResult result = MessageBox.Show($"Are you sure you want to delete '{filepath}' ?",
+                "Character deleted.",
+                MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                File.Delete(filepath);
+                this.loadCharacters();
+            }
+        }
+
+        private void button_generateCharacter_Click(object sender, EventArgs e)
+        {
+            GenerateNewCharacterForm f = new GenerateNewCharacterForm(this);
             f.Show();
         }
     }

@@ -7,12 +7,12 @@ namespace FERD.Helpers
     {
         public static bool IsClassSetToNull(this ComboBox cb)
         {
-            return (cb.SelectedValue as string)?.Equals(Classes.Null.Name) ?? true;
+            return (cb.SelectedValue as string)?.Equals(Classes.Empty.Name) ?? true;
         }
 
         public static ClassType GetSelectedClass(this ComboBox cb)
         {
-            return (cb.SelectedItem as ClassType) ?? Classes.Null;
+            return (cb.SelectedItem as ClassType) ?? Classes.Empty;
         }
 
         public static List<ClassType> getSubclasses(this ComboBox cb)
@@ -35,7 +35,7 @@ namespace FERD.Helpers
         {
             dropdown.DisplayMember = "Name";
             dropdown.ValueMember = "Name";
-            classOptions.Insert(0, Classes.Null);    // Sets the empty class option as the first option in the list
+            classOptions.Insert(0, Classes.Empty);    // Sets the empty class option as the first option in the list
             dropdown.DataSource = classOptions;      // Binds the options to this list
             dropdown.SelectedIndex = 0;              // Selects the first option by default
             dropdown.Enabled = enabled;
@@ -48,18 +48,19 @@ namespace FERD.Helpers
         /// <param name="tier1Dropdown">The character's tier 1 class options</param>
         /// <param name="tier2Dropdown">The character's tier 2 class options</param>
         /// <param name="tier3Dropdown">The character's tier 3 class options</param>
-        public static void initClassDropdowns(this Character c, ComboBox tier1Dropdown, ComboBox tier2Dropdown, ComboBox tier3Dropdown)
+        /// <param name="enabled">Sets the enabled/disabled state of the dropdowns by default</param>
+        public static void initClassDropdowns(this Character c, ComboBox tier1Dropdown, ComboBox tier2Dropdown, ComboBox tier3Dropdown, bool enabled = false)
         {
             // Give class1 box all options and set selected from character data
-            tier1Dropdown.initClassDropdown(Classes.Tier1);
+            tier1Dropdown.initClassDropdown(Classes.Tier1, enabled);
             tier1Dropdown.SelectedValue = c.Class1.Name;
 
             // Give class2 restricted options and set selected from character data
-            tier2Dropdown.initClassDropdown(c.Class1.getSubclassObjects());
+            tier2Dropdown.initClassDropdown(c.Class1.getSubclassObjects(), enabled);
             tier2Dropdown.SelectedValue = c.Class2.Name;
 
             // Give class3 restricted options and set selected from character data
-            tier3Dropdown.initClassDropdown(c.Class2.getSubclassObjects());
+            tier3Dropdown.initClassDropdown(c.Class2.getSubclassObjects(), enabled);
             tier3Dropdown.SelectedValue = c.Class3.Name;
         }
 

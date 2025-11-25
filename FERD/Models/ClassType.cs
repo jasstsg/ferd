@@ -19,6 +19,11 @@ namespace FERD.Models
             return Classes.ClassMap.Values.Where(c => this.Subclasses.Contains(c.Name)).ToList();
         }
 
+        public bool Equals(ClassType other)
+        {
+            return this.Name.Equals(other.Name);
+        }
+
         [JsonIgnore]
         public ClassType Value
         {
