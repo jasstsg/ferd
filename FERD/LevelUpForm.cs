@@ -14,6 +14,23 @@ namespace FERD
             _character = c;
             _characterForm = cf;
             initFields();
+            setToolTips();
+        }
+
+        private void setToolTips()
+        {
+            label_hp.setHpToolTip();
+            label_sm.setSmToolTip();
+            label_skl.setSklToolTip();
+            label_spd.setSpdToolTip();
+            label_def.setDefToolTip();
+            label_res.setResToolTip();
+            label_hpValue.setHpToolTip();
+            label_smValue.setSmToolTip();
+            label_sklValue.setSklToolTip();
+            label_spdValue.setSpdToolTip();
+            label_defValue.setDefToolTip();
+            label_resValue.setResToolTip();
         }
 
         private void initFields()
@@ -40,12 +57,12 @@ namespace FERD
 
         private void initStats()
         {
-            label_hp.Text = _character.Stats.HP.ToString();
-            label_sm.Text = _character.Stats.SM.ToString();
-            label_skl.Text = _character.Stats.SKL.ToString();
-            label_spd.Text = _character.Stats.SPD.ToString();
-            label_def.Text = _character.Stats.DEF.ToString();
-            label_res.Text = _character.Stats.RES.ToString();
+            label_hpValue.Text = _character.Stats.HP.ToString();
+            label_smValue.Text = _character.Stats.SM.ToString();
+            label_sklValue.Text = _character.Stats.SKL.ToString();
+            label_spdValue.Text = _character.Stats.SPD.ToString();
+            label_defValue.Text = _character.Stats.DEF.ToString();
+            label_resValue.Text = _character.Stats.RES.ToString();
         }
 
         private async void button_startLevelUp_Click(object sender, EventArgs e)

@@ -37,6 +37,7 @@
             button_OpenPromotionTree = new Button();
             button_generateCharacter = new Button();
             groupBox1 = new GroupBox();
+            button_openSaveFolder = new Button();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
@@ -52,7 +53,7 @@
             // 
             // button_setCharacterFolder
             // 
-            button_setCharacterFolder.Location = new Point(398, 21);
+            button_setCharacterFolder.Location = new Point(341, 21);
             button_setCharacterFolder.Name = "button_setCharacterFolder";
             button_setCharacterFolder.Size = new Size(55, 23);
             button_setCharacterFolder.TabIndex = 1;
@@ -64,7 +65,7 @@
             // 
             textBox_characterFolder.Location = new Point(6, 22);
             textBox_characterFolder.Name = "textBox_characterFolder";
-            textBox_characterFolder.Size = new Size(386, 23);
+            textBox_characterFolder.Size = new Size(329, 23);
             textBox_characterFolder.TabIndex = 2;
             // 
             // listBox_characters
@@ -118,6 +119,7 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(button_openSaveFolder);
             groupBox1.Controls.Add(textBox_characterFolder);
             groupBox1.Controls.Add(button_setCharacterFolder);
             groupBox1.Location = new Point(13, 12);
@@ -126,6 +128,16 @@
             groupBox1.TabIndex = 8;
             groupBox1.TabStop = false;
             groupBox1.Text = "Character save folder";
+            // 
+            // button_openSaveFolder
+            // 
+            button_openSaveFolder.Location = new Point(398, 21);
+            button_openSaveFolder.Name = "button_openSaveFolder";
+            button_openSaveFolder.Size = new Size(55, 23);
+            button_openSaveFolder.TabIndex = 3;
+            button_openSaveFolder.Text = "Open";
+            button_openSaveFolder.UseVisualStyleBackColor = true;
+            button_openSaveFolder.Click += button_openSaveFolder_Click;
             // 
             // MainForm
             // 
@@ -157,5 +169,6 @@
         private Button button_OpenPromotionTree;
         private Button button_generateCharacter;
         private GroupBox groupBox1;
+        private Button button_openSaveFolder;
     }
 }

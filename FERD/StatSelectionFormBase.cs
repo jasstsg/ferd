@@ -17,8 +17,6 @@
         protected NumericUpDown numberBoxSpd { get; set; }
         protected NumericUpDown numberBoxDef { get; set; }
         protected NumericUpDown numberBoxRes { get; set; }
-
-
         protected int updateStatValue(NumericUpDown numberBox, int previousValue)
         {
             // Get the change in value

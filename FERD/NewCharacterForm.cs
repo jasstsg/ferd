@@ -22,6 +22,23 @@ namespace FERD
             this.numberBoxDef = numberBox_def;
             this.numberBoxRes = numberBox_res;
             comboBox_class.initClassDropdown(Classes.Tier1, true);
+            setToolTips();
+        }
+
+        private void setToolTips()
+        {
+            label_hp.setHpToolTip();
+            label_sm.setSmToolTip();
+            label_skl.setSklToolTip();
+            label_spd.setSpdToolTip();
+            label_def.setDefToolTip();
+            label_res.setResToolTip();
+            numberBoxHp.setHpToolTip();
+            numberBoxSm.setSmToolTip();
+            numberBoxSkl.setSklToolTip();
+            numberBoxSpd.setSpdToolTip();
+            numberBoxDef.setDefToolTip();
+            numberBoxRes.setResToolTip();
         }
 
 

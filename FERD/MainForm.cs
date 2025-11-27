@@ -109,5 +109,18 @@ namespace FERD
             GenerateNewCharacterForm f = new GenerateNewCharacterForm(this);
             f.Show();
         }
+
+        private void button_openSaveFolder_Click(object sender, EventArgs e)
+        {
+            if (Directory.Exists(_characterDir))
+            {
+                // Start the explorer process to open the specified folder
+                System.Diagnostics.Process.Start("explorer.exe", _characterDir);
+            }
+            else
+            {
+                MessageBox.Show("Folder not found: " + _characterDir);
+            }
+        }
     }
 }

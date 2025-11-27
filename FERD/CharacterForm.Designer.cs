@@ -54,17 +54,18 @@
             button_levelUp = new Button();
             groupBox5 = new GroupBox();
             table_combatStats = new TableLayoutPanel();
-            label12 = new Label();
-            label3 = new Label();
-            label1 = new Label();
-            label9 = new Label();
-            label10 = new Label();
-            label6 = new Label();
-            label7 = new Label();
-            label5 = new Label();
+            label_movCombat = new Label();
+            label_hit = new Label();
+            label_defCombat = new Label();
+            label_resCombat = new Label();
+            label_avd = new Label();
+            label_crt = new Label();
+            label_as = new Label();
+            label_dmg = new Label();
             numberBox_exp = new NumericUpDown();
             label2 = new Label();
             groupBox7 = new GroupBox();
+            textBox_features = new TextBox();
             groupBox4 = new GroupBox();
             comboBox_class3 = new ComboBox();
             comboBox_class2 = new ComboBox();
@@ -72,33 +73,32 @@
             pictureBox1 = new PictureBox();
             groupBox2 = new GroupBox();
             table_stats = new TableLayoutPanel();
-            label18 = new Label();
-            label19 = new Label();
-            label20 = new Label();
-            label21 = new Label();
-            label22 = new Label();
-            label23 = new Label();
-            label15 = new Label();
+            label_sm = new Label();
+            label_skl = new Label();
+            label_spd = new Label();
+            label_def = new Label();
+            label_res = new Label();
+            label_mov = new Label();
+            label_hp = new Label();
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
             tabPage2 = new TabPage();
             groupBox6 = new GroupBox();
             table_weaponRanks = new TableLayoutPanel();
-            pictureBox10 = new PictureBox();
-            pictureBox11 = new PictureBox();
-            pictureBox12 = new PictureBox();
-            pictureBox13 = new PictureBox();
-            pictureBox14 = new PictureBox();
-            pictureBox15 = new PictureBox();
-            pictureBox16 = new PictureBox();
-            pictureBox17 = new PictureBox();
+            pictureBox_swords = new PictureBox();
+            pictureBox_axes = new PictureBox();
+            pictureBox_lances = new PictureBox();
+            pictureBox_bows = new PictureBox();
+            pictureBox_anima = new PictureBox();
+            pictureBox_light = new PictureBox();
+            pictureBox_dark = new PictureBox();
+            pictureBox_staves = new PictureBox();
             tableLayoutPanel1 = new TableLayoutPanel();
             label4 = new Label();
             label8 = new Label();
             tableLayoutPanel2 = new TableLayoutPanel();
             label13 = new Label();
             label14 = new Label();
-            textBox_features = new TextBox();
             groupBox_characterDetails.SuspendLayout();
             groupBox8.SuspendLayout();
             groupBox5.SuspendLayout();
@@ -114,14 +114,14 @@
             tabPage2.SuspendLayout();
             groupBox6.SuspendLayout();
             table_weaponRanks.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox10).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox11).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox12).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox13).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox14).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox15).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox16).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox17).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox_swords).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox_axes).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox_lances).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox_bows).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox_anima).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox_light).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox_dark).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox_staves).BeginInit();
             tableLayoutPanel1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
             SuspendLayout();
@@ -399,14 +399,14 @@
             table_combatStats.ColumnCount = 2;
             table_combatStats.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             table_combatStats.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            table_combatStats.Controls.Add(label12, 0, 7);
-            table_combatStats.Controls.Add(label3, 0, 0);
-            table_combatStats.Controls.Add(label1, 0, 5);
-            table_combatStats.Controls.Add(label9, 0, 6);
-            table_combatStats.Controls.Add(label10, 0, 4);
-            table_combatStats.Controls.Add(label6, 0, 1);
-            table_combatStats.Controls.Add(label7, 0, 3);
-            table_combatStats.Controls.Add(label5, 0, 2);
+            table_combatStats.Controls.Add(label_movCombat, 0, 7);
+            table_combatStats.Controls.Add(label_hit, 0, 0);
+            table_combatStats.Controls.Add(label_defCombat, 0, 5);
+            table_combatStats.Controls.Add(label_resCombat, 0, 6);
+            table_combatStats.Controls.Add(label_avd, 0, 4);
+            table_combatStats.Controls.Add(label_crt, 0, 1);
+            table_combatStats.Controls.Add(label_as, 0, 3);
+            table_combatStats.Controls.Add(label_dmg, 0, 2);
             table_combatStats.Location = new Point(6, 16);
             table_combatStats.Name = "table_combatStats";
             table_combatStats.RowCount = 8;
@@ -421,85 +421,85 @@
             table_combatStats.Size = new Size(118, 200);
             table_combatStats.TabIndex = 30;
             // 
-            // label12
+            // label_movCombat
             // 
-            label12.Anchor = AnchorStyles.None;
-            label12.AutoSize = true;
-            label12.Location = new Point(12, 180);
-            label12.Name = "label12";
-            label12.Size = new Size(34, 15);
-            label12.TabIndex = 26;
-            label12.Text = "MOV";
+            label_movCombat.Anchor = AnchorStyles.None;
+            label_movCombat.AutoSize = true;
+            label_movCombat.Location = new Point(12, 180);
+            label_movCombat.Name = "label_movCombat";
+            label_movCombat.Size = new Size(34, 15);
+            label_movCombat.TabIndex = 26;
+            label_movCombat.Text = "MOV";
             // 
-            // label3
+            // label_hit
             // 
-            label3.Anchor = AnchorStyles.None;
-            label3.AutoSize = true;
-            label3.Location = new Point(17, 5);
-            label3.Name = "label3";
-            label3.Size = new Size(25, 15);
-            label3.TabIndex = 20;
-            label3.Text = "HIT";
+            label_hit.Anchor = AnchorStyles.None;
+            label_hit.AutoSize = true;
+            label_hit.Location = new Point(17, 5);
+            label_hit.Name = "label_hit";
+            label_hit.Size = new Size(25, 15);
+            label_hit.TabIndex = 20;
+            label_hit.Text = "HIT";
             // 
-            // label1
+            // label_defCombat
             // 
-            label1.Anchor = AnchorStyles.None;
-            label1.AutoSize = true;
-            label1.Location = new Point(16, 130);
-            label1.Name = "label1";
-            label1.Size = new Size(27, 15);
-            label1.TabIndex = 29;
-            label1.Text = "DEF";
+            label_defCombat.Anchor = AnchorStyles.None;
+            label_defCombat.AutoSize = true;
+            label_defCombat.Location = new Point(16, 130);
+            label_defCombat.Name = "label_defCombat";
+            label_defCombat.Size = new Size(27, 15);
+            label_defCombat.TabIndex = 29;
+            label_defCombat.Text = "DEF";
             // 
-            // label9
+            // label_resCombat
             // 
-            label9.Anchor = AnchorStyles.None;
-            label9.AutoSize = true;
-            label9.Location = new Point(16, 155);
-            label9.Name = "label9";
-            label9.Size = new Size(26, 15);
-            label9.TabIndex = 30;
-            label9.Text = "RES";
+            label_resCombat.Anchor = AnchorStyles.None;
+            label_resCombat.AutoSize = true;
+            label_resCombat.Location = new Point(16, 155);
+            label_resCombat.Name = "label_resCombat";
+            label_resCombat.Size = new Size(26, 15);
+            label_resCombat.TabIndex = 30;
+            label_resCombat.Text = "RES";
             // 
-            // label10
+            // label_avd
             // 
-            label10.Anchor = AnchorStyles.None;
-            label10.AutoSize = true;
-            label10.Location = new Point(15, 105);
-            label10.Name = "label10";
-            label10.Size = new Size(29, 15);
-            label10.TabIndex = 28;
-            label10.Text = "AVD";
+            label_avd.Anchor = AnchorStyles.None;
+            label_avd.AutoSize = true;
+            label_avd.Location = new Point(15, 105);
+            label_avd.Name = "label_avd";
+            label_avd.Size = new Size(29, 15);
+            label_avd.TabIndex = 28;
+            label_avd.Text = "AVD";
             // 
-            // label6
+            // label_crt
             // 
-            label6.Anchor = AnchorStyles.None;
-            label6.AutoSize = true;
-            label6.Location = new Point(16, 30);
-            label6.Name = "label6";
-            label6.Size = new Size(27, 15);
-            label6.TabIndex = 25;
-            label6.Text = "CRT";
+            label_crt.Anchor = AnchorStyles.None;
+            label_crt.AutoSize = true;
+            label_crt.Location = new Point(16, 30);
+            label_crt.Name = "label_crt";
+            label_crt.Size = new Size(27, 15);
+            label_crt.TabIndex = 25;
+            label_crt.Text = "CRT";
             // 
-            // label7
+            // label_as
             // 
-            label7.Anchor = AnchorStyles.None;
-            label7.AutoSize = true;
-            label7.Location = new Point(19, 80);
-            label7.Name = "label7";
-            label7.Size = new Size(21, 15);
-            label7.TabIndex = 24;
-            label7.Text = "AS";
+            label_as.Anchor = AnchorStyles.None;
+            label_as.AutoSize = true;
+            label_as.Location = new Point(19, 80);
+            label_as.Name = "label_as";
+            label_as.Size = new Size(21, 15);
+            label_as.TabIndex = 24;
+            label_as.Text = "AS";
             // 
-            // label5
+            // label_dmg
             // 
-            label5.Anchor = AnchorStyles.None;
-            label5.AutoSize = true;
-            label5.Location = new Point(12, 55);
-            label5.Name = "label5";
-            label5.Size = new Size(34, 15);
-            label5.TabIndex = 22;
-            label5.Text = "DMG";
+            label_dmg.Anchor = AnchorStyles.None;
+            label_dmg.AutoSize = true;
+            label_dmg.Location = new Point(12, 55);
+            label_dmg.Name = "label_dmg";
+            label_dmg.Size = new Size(34, 15);
+            label_dmg.TabIndex = 22;
+            label_dmg.Text = "DMG";
             // 
             // numberBox_exp
             // 
@@ -528,6 +528,15 @@
             groupBox7.TabIndex = 2;
             groupBox7.TabStop = false;
             groupBox7.Text = "Features";
+            // 
+            // textBox_features
+            // 
+            textBox_features.Location = new Point(7, 18);
+            textBox_features.Multiline = true;
+            textBox_features.Name = "textBox_features";
+            textBox_features.ReadOnly = true;
+            textBox_features.Size = new Size(117, 91);
+            textBox_features.TabIndex = 0;
             // 
             // groupBox4
             // 
@@ -589,13 +598,13 @@
             table_stats.ColumnCount = 2;
             table_stats.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             table_stats.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            table_stats.Controls.Add(label18, 0, 1);
-            table_stats.Controls.Add(label19, 0, 2);
-            table_stats.Controls.Add(label20, 0, 3);
-            table_stats.Controls.Add(label21, 0, 4);
-            table_stats.Controls.Add(label22, 0, 5);
-            table_stats.Controls.Add(label23, 0, 6);
-            table_stats.Controls.Add(label15, 0, 0);
+            table_stats.Controls.Add(label_sm, 0, 1);
+            table_stats.Controls.Add(label_skl, 0, 2);
+            table_stats.Controls.Add(label_spd, 0, 3);
+            table_stats.Controls.Add(label_def, 0, 4);
+            table_stats.Controls.Add(label_res, 0, 5);
+            table_stats.Controls.Add(label_mov, 0, 6);
+            table_stats.Controls.Add(label_hp, 0, 0);
             table_stats.Location = new Point(6, 19);
             table_stats.Name = "table_stats";
             table_stats.RowCount = 7;
@@ -610,75 +619,75 @@
             table_stats.Size = new Size(137, 210);
             table_stats.TabIndex = 29;
             // 
-            // label18
+            // label_sm
             // 
-            label18.Anchor = AnchorStyles.None;
-            label18.AutoSize = true;
-            label18.Location = new Point(19, 37);
-            label18.Name = "label18";
-            label18.Size = new Size(29, 15);
-            label18.TabIndex = 26;
-            label18.Text = "S/M";
+            label_sm.Anchor = AnchorStyles.None;
+            label_sm.AutoSize = true;
+            label_sm.Location = new Point(19, 37);
+            label_sm.Name = "label_sm";
+            label_sm.Size = new Size(29, 15);
+            label_sm.TabIndex = 26;
+            label_sm.Text = "S/M";
             // 
-            // label19
+            // label_skl
             // 
-            label19.Anchor = AnchorStyles.None;
-            label19.AutoSize = true;
-            label19.Location = new Point(21, 67);
-            label19.Name = "label19";
-            label19.Size = new Size(26, 15);
-            label19.TabIndex = 27;
-            label19.Text = "SKL";
+            label_skl.Anchor = AnchorStyles.None;
+            label_skl.AutoSize = true;
+            label_skl.Location = new Point(21, 67);
+            label_skl.Name = "label_skl";
+            label_skl.Size = new Size(26, 15);
+            label_skl.TabIndex = 27;
+            label_skl.Text = "SKL";
             // 
-            // label20
+            // label_spd
             // 
-            label20.Anchor = AnchorStyles.None;
-            label20.AutoSize = true;
-            label20.Location = new Point(20, 97);
-            label20.Name = "label20";
-            label20.Size = new Size(28, 15);
-            label20.TabIndex = 28;
-            label20.Text = "SPD";
+            label_spd.Anchor = AnchorStyles.None;
+            label_spd.AutoSize = true;
+            label_spd.Location = new Point(20, 97);
+            label_spd.Name = "label_spd";
+            label_spd.Size = new Size(28, 15);
+            label_spd.TabIndex = 28;
+            label_spd.Text = "SPD";
             // 
-            // label21
+            // label_def
             // 
-            label21.Anchor = AnchorStyles.None;
-            label21.AutoSize = true;
-            label21.Location = new Point(20, 127);
-            label21.Name = "label21";
-            label21.Size = new Size(27, 15);
-            label21.TabIndex = 29;
-            label21.Text = "DEF";
+            label_def.Anchor = AnchorStyles.None;
+            label_def.AutoSize = true;
+            label_def.Location = new Point(20, 127);
+            label_def.Name = "label_def";
+            label_def.Size = new Size(27, 15);
+            label_def.TabIndex = 29;
+            label_def.Text = "DEF";
             // 
-            // label22
+            // label_res
             // 
-            label22.Anchor = AnchorStyles.None;
-            label22.AutoSize = true;
-            label22.Location = new Point(21, 157);
-            label22.Name = "label22";
-            label22.Size = new Size(26, 15);
-            label22.TabIndex = 30;
-            label22.Text = "RES";
+            label_res.Anchor = AnchorStyles.None;
+            label_res.AutoSize = true;
+            label_res.Location = new Point(21, 157);
+            label_res.Name = "label_res";
+            label_res.Size = new Size(26, 15);
+            label_res.TabIndex = 30;
+            label_res.Text = "RES";
             // 
-            // label23
+            // label_mov
             // 
-            label23.Anchor = AnchorStyles.None;
-            label23.AutoSize = true;
-            label23.Location = new Point(17, 187);
-            label23.Name = "label23";
-            label23.Size = new Size(34, 15);
-            label23.TabIndex = 31;
-            label23.Text = "MOV";
+            label_mov.Anchor = AnchorStyles.None;
+            label_mov.AutoSize = true;
+            label_mov.Location = new Point(17, 187);
+            label_mov.Name = "label_mov";
+            label_mov.Size = new Size(34, 15);
+            label_mov.TabIndex = 31;
+            label_mov.Text = "MOV";
             // 
-            // label15
+            // label_hp
             // 
-            label15.Anchor = AnchorStyles.None;
-            label15.AutoSize = true;
-            label15.Location = new Point(22, 7);
-            label15.Name = "label15";
-            label15.Size = new Size(23, 15);
-            label15.TabIndex = 25;
-            label15.Text = "HP";
+            label_hp.Anchor = AnchorStyles.None;
+            label_hp.AutoSize = true;
+            label_hp.Location = new Point(22, 7);
+            label_hp.Name = "label_hp";
+            label_hp.Size = new Size(23, 15);
+            label_hp.TabIndex = 25;
+            label_hp.Text = "HP";
             // 
             // tabControl1
             // 
@@ -731,14 +740,14 @@
             table_weaponRanks.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
             table_weaponRanks.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
             table_weaponRanks.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
-            table_weaponRanks.Controls.Add(pictureBox10, 0, 0);
-            table_weaponRanks.Controls.Add(pictureBox11, 0, 1);
-            table_weaponRanks.Controls.Add(pictureBox12, 0, 2);
-            table_weaponRanks.Controls.Add(pictureBox13, 0, 3);
-            table_weaponRanks.Controls.Add(pictureBox14, 2, 0);
-            table_weaponRanks.Controls.Add(pictureBox15, 2, 1);
-            table_weaponRanks.Controls.Add(pictureBox16, 2, 2);
-            table_weaponRanks.Controls.Add(pictureBox17, 2, 3);
+            table_weaponRanks.Controls.Add(pictureBox_swords, 0, 0);
+            table_weaponRanks.Controls.Add(pictureBox_axes, 0, 1);
+            table_weaponRanks.Controls.Add(pictureBox_lances, 0, 2);
+            table_weaponRanks.Controls.Add(pictureBox_bows, 0, 3);
+            table_weaponRanks.Controls.Add(pictureBox_anima, 2, 0);
+            table_weaponRanks.Controls.Add(pictureBox_light, 2, 1);
+            table_weaponRanks.Controls.Add(pictureBox_dark, 2, 2);
+            table_weaponRanks.Controls.Add(pictureBox_staves, 2, 3);
             table_weaponRanks.Location = new Point(6, 19);
             table_weaponRanks.Name = "table_weaponRanks";
             table_weaponRanks.RowCount = 4;
@@ -753,85 +762,85 @@
             table_weaponRanks.Size = new Size(278, 160);
             table_weaponRanks.TabIndex = 29;
             // 
-            // pictureBox10
+            // pictureBox_swords
             // 
-            pictureBox10.Anchor = AnchorStyles.None;
-            pictureBox10.Image = Properties.Resources.sword;
-            pictureBox10.Location = new Point(18, 4);
-            pictureBox10.Name = "pictureBox10";
-            pictureBox10.Size = new Size(32, 32);
-            pictureBox10.TabIndex = 30;
-            pictureBox10.TabStop = false;
+            pictureBox_swords.Anchor = AnchorStyles.None;
+            pictureBox_swords.Image = Properties.Resources.sword;
+            pictureBox_swords.Location = new Point(18, 4);
+            pictureBox_swords.Name = "pictureBox_swords";
+            pictureBox_swords.Size = new Size(32, 32);
+            pictureBox_swords.TabIndex = 30;
+            pictureBox_swords.TabStop = false;
             // 
-            // pictureBox11
+            // pictureBox_axes
             // 
-            pictureBox11.Anchor = AnchorStyles.None;
-            pictureBox11.Image = Properties.Resources.axe;
-            pictureBox11.Location = new Point(18, 44);
-            pictureBox11.Name = "pictureBox11";
-            pictureBox11.Size = new Size(32, 32);
-            pictureBox11.TabIndex = 31;
-            pictureBox11.TabStop = false;
+            pictureBox_axes.Anchor = AnchorStyles.None;
+            pictureBox_axes.Image = Properties.Resources.axe;
+            pictureBox_axes.Location = new Point(18, 44);
+            pictureBox_axes.Name = "pictureBox_axes";
+            pictureBox_axes.Size = new Size(32, 32);
+            pictureBox_axes.TabIndex = 31;
+            pictureBox_axes.TabStop = false;
             // 
-            // pictureBox12
+            // pictureBox_lances
             // 
-            pictureBox12.Anchor = AnchorStyles.None;
-            pictureBox12.Image = Properties.Resources.lance;
-            pictureBox12.Location = new Point(18, 84);
-            pictureBox12.Name = "pictureBox12";
-            pictureBox12.Size = new Size(32, 32);
-            pictureBox12.TabIndex = 32;
-            pictureBox12.TabStop = false;
+            pictureBox_lances.Anchor = AnchorStyles.None;
+            pictureBox_lances.Image = Properties.Resources.lance;
+            pictureBox_lances.Location = new Point(18, 84);
+            pictureBox_lances.Name = "pictureBox_lances";
+            pictureBox_lances.Size = new Size(32, 32);
+            pictureBox_lances.TabIndex = 32;
+            pictureBox_lances.TabStop = false;
             // 
-            // pictureBox13
+            // pictureBox_bows
             // 
-            pictureBox13.Anchor = AnchorStyles.None;
-            pictureBox13.Image = Properties.Resources.bow;
-            pictureBox13.Location = new Point(18, 124);
-            pictureBox13.Name = "pictureBox13";
-            pictureBox13.Size = new Size(32, 32);
-            pictureBox13.TabIndex = 33;
-            pictureBox13.TabStop = false;
+            pictureBox_bows.Anchor = AnchorStyles.None;
+            pictureBox_bows.Image = Properties.Resources.bow;
+            pictureBox_bows.Location = new Point(18, 124);
+            pictureBox_bows.Name = "pictureBox_bows";
+            pictureBox_bows.Size = new Size(32, 32);
+            pictureBox_bows.TabIndex = 33;
+            pictureBox_bows.TabStop = false;
             // 
-            // pictureBox14
+            // pictureBox_anima
             // 
-            pictureBox14.Anchor = AnchorStyles.None;
-            pictureBox14.Image = Properties.Resources.anima;
-            pictureBox14.Location = new Point(156, 4);
-            pictureBox14.Name = "pictureBox14";
-            pictureBox14.Size = new Size(32, 32);
-            pictureBox14.TabIndex = 34;
-            pictureBox14.TabStop = false;
+            pictureBox_anima.Anchor = AnchorStyles.None;
+            pictureBox_anima.Image = Properties.Resources.anima;
+            pictureBox_anima.Location = new Point(156, 4);
+            pictureBox_anima.Name = "pictureBox_anima";
+            pictureBox_anima.Size = new Size(32, 32);
+            pictureBox_anima.TabIndex = 34;
+            pictureBox_anima.TabStop = false;
             // 
-            // pictureBox15
+            // pictureBox_light
             // 
-            pictureBox15.Anchor = AnchorStyles.None;
-            pictureBox15.Image = Properties.Resources.light;
-            pictureBox15.Location = new Point(156, 44);
-            pictureBox15.Name = "pictureBox15";
-            pictureBox15.Size = new Size(32, 32);
-            pictureBox15.TabIndex = 35;
-            pictureBox15.TabStop = false;
+            pictureBox_light.Anchor = AnchorStyles.None;
+            pictureBox_light.Image = Properties.Resources.light;
+            pictureBox_light.Location = new Point(156, 44);
+            pictureBox_light.Name = "pictureBox_light";
+            pictureBox_light.Size = new Size(32, 32);
+            pictureBox_light.TabIndex = 35;
+            pictureBox_light.TabStop = false;
             // 
-            // pictureBox16
+            // pictureBox_dark
             // 
-            pictureBox16.Anchor = AnchorStyles.None;
-            pictureBox16.Image = Properties.Resources.dark;
-            pictureBox16.Location = new Point(156, 84);
-            pictureBox16.Name = "pictureBox16";
-            pictureBox16.Size = new Size(32, 32);
-            pictureBox16.TabIndex = 36;
-            pictureBox16.TabStop = false;
+            pictureBox_dark.Anchor = AnchorStyles.None;
+            pictureBox_dark.Image = Properties.Resources.dark;
+            pictureBox_dark.Location = new Point(156, 84);
+            pictureBox_dark.Name = "pictureBox_dark";
+            pictureBox_dark.Size = new Size(32, 32);
+            pictureBox_dark.TabIndex = 36;
+            pictureBox_dark.TabStop = false;
             // 
-            // pictureBox17
+            // pictureBox_staves
             // 
-            pictureBox17.Anchor = AnchorStyles.None;
-            pictureBox17.Image = Properties.Resources.staff;
-            pictureBox17.Location = new Point(156, 124);
-            pictureBox17.Name = "pictureBox17";
-            pictureBox17.Size = new Size(32, 32);
-            pictureBox17.TabIndex = 37;
-            pictureBox17.TabStop = false;
+            pictureBox_staves.Anchor = AnchorStyles.None;
+            pictureBox_staves.Image = Properties.Resources.staff;
+            pictureBox_staves.Location = new Point(156, 124);
+            pictureBox_staves.Name = "pictureBox_staves";
+            pictureBox_staves.Size = new Size(32, 32);
+            pictureBox_staves.TabIndex = 37;
+            pictureBox_staves.TabStop = false;
             // 
             // tableLayoutPanel1
             // 
@@ -899,15 +908,6 @@
             label14.TabIndex = 26;
             label14.Text = "S/M";
             // 
-            // textBox_features
-            // 
-            textBox_features.Location = new Point(7, 18);
-            textBox_features.Multiline = true;
-            textBox_features.Name = "textBox_features";
-            textBox_features.ReadOnly = true;
-            textBox_features.Size = new Size(117, 91);
-            textBox_features.TabIndex = 0;
-            // 
             // CharacterForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -935,14 +935,14 @@
             tabPage2.ResumeLayout(false);
             groupBox6.ResumeLayout(false);
             table_weaponRanks.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pictureBox10).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox11).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox12).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox13).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox14).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox15).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox16).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox17).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox_swords).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox_axes).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox_lances).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox_bows).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox_anima).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox_light).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox_dark).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox_staves).EndInit();
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
             tableLayoutPanel2.ResumeLayout(false);
@@ -966,13 +966,13 @@
         private NumericUpDown numberBox_exp;
         private Label label2;
         private GroupBox groupBox5;
-        private Label label3;
-        private Label label6;
-        private Label label7;
-        private Label label5;
-        private Label label10;
-        private Label label12;
-        private Label label15;
+        private Label label_hit;
+        private Label label_crt;
+        private Label label_as;
+        private Label label_dmg;
+        private Label label_avd;
+        private Label label_movCombat;
+        private Label label_hp;
         private GroupBox groupBox3;
         private NumericUpDown numericUpDown6;
         private TextBox textBox5;
@@ -999,12 +999,12 @@
         private TextBox textBox9;
         private PictureBox pictureBox9;
         private TableLayoutPanel table_stats;
-        private Label label18;
-        private Label label19;
-        private Label label20;
-        private Label label21;
-        private Label label22;
-        private Label label23;
+        private Label label_sm;
+        private Label label_skl;
+        private Label label_spd;
+        private Label label_def;
+        private Label label_res;
+        private Label label_mov;
         private TableLayoutPanel tableLayoutPanel1;
         private Label label4;
         private Label label8;
@@ -1013,14 +1013,14 @@
         private Label label14;
         private GroupBox groupBox6;
         private TableLayoutPanel table_weaponRanks;
-        private PictureBox pictureBox10;
-        private PictureBox pictureBox11;
-        private PictureBox pictureBox12;
-        private PictureBox pictureBox13;
-        private PictureBox pictureBox14;
-        private PictureBox pictureBox15;
-        private PictureBox pictureBox16;
-        private PictureBox pictureBox17;
+        private PictureBox pictureBox_swords;
+        private PictureBox pictureBox_axes;
+        private PictureBox pictureBox_lances;
+        private PictureBox pictureBox_bows;
+        private PictureBox pictureBox_anima;
+        private PictureBox pictureBox_light;
+        private PictureBox pictureBox_dark;
+        private PictureBox pictureBox_staves;
         private TableLayoutPanel table_combatStats;
         private Button button_levelUp;
         private GroupBox groupBox8;
@@ -1045,8 +1045,8 @@
         private Button button_selectInv3;
         private Button button_selectInv2;
         private Button button_selectInv1;
-        private Label label1;
-        private Label label9;
+        private Label label_defCombat;
+        private Label label_resCombat;
         private TextBox textBox_features;
     }
 }

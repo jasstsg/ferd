@@ -21,7 +21,23 @@ namespace FERD
             this.numberBoxDef = numberBox_def;
             this.numberBoxRes = numberBox_res;
             c.initClassDropdowns(comboBox_class1, comboBox_class2, comboBox_class3, true);
+            setToolTips();
 
+        }
+        private void setToolTips()
+        {
+            label_hp.setHpToolTip();
+            label_sm.setSmToolTip();
+            label_skl.setSklToolTip();
+            label_spd.setSpdToolTip();
+            label_def.setDefToolTip();
+            label_res.setResToolTip();
+            numberBoxHp.setHpToolTip();
+            numberBoxSm.setSmToolTip();
+            numberBoxSkl.setSklToolTip();
+            numberBoxSpd.setSpdToolTip();
+            numberBoxDef.setDefToolTip();
+            numberBoxRes.setResToolTip();
         }
 
         private void comboBox_class1_SelectedIndexChanged(object sender, EventArgs e)

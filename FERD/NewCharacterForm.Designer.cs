@@ -38,13 +38,13 @@
             numberBox_spd = new NumericUpDown();
             numberBox_skl = new NumericUpDown();
             numberBox_sm = new NumericUpDown();
-            label18 = new Label();
-            label19 = new Label();
-            label20 = new Label();
-            label21 = new Label();
-            label22 = new Label();
+            label_sm = new Label();
+            label_skl = new Label();
+            label_spd = new Label();
+            label_def = new Label();
+            label_res = new Label();
             numberBox_hp = new NumericUpDown();
-            label15 = new Label();
+            label_hp = new Label();
             button_createCharacter = new Button();
             textBox_classDescription = new TextBox();
             table_stats.SuspendLayout();
@@ -86,13 +86,13 @@
             table_stats.Controls.Add(numberBox_spd, 1, 3);
             table_stats.Controls.Add(numberBox_skl, 1, 2);
             table_stats.Controls.Add(numberBox_sm, 1, 1);
-            table_stats.Controls.Add(label18, 0, 1);
-            table_stats.Controls.Add(label19, 0, 2);
-            table_stats.Controls.Add(label20, 0, 3);
-            table_stats.Controls.Add(label21, 0, 4);
-            table_stats.Controls.Add(label22, 0, 5);
+            table_stats.Controls.Add(label_sm, 0, 1);
+            table_stats.Controls.Add(label_skl, 0, 2);
+            table_stats.Controls.Add(label_spd, 0, 3);
+            table_stats.Controls.Add(label_def, 0, 4);
+            table_stats.Controls.Add(label_res, 0, 5);
             table_stats.Controls.Add(numberBox_hp, 1, 0);
-            table_stats.Controls.Add(label15, 0, 0);
+            table_stats.Controls.Add(label_hp, 0, 0);
             table_stats.Location = new Point(159, 17);
             table_stats.Name = "table_stats";
             table_stats.RowCount = 7;
@@ -171,55 +171,55 @@
             numberBox_sm.TabIndex = 32;
             numberBox_sm.ValueChanged += numberBox_sm_changed;
             // 
-            // label18
+            // label_sm
             // 
-            label18.Anchor = AnchorStyles.None;
-            label18.AutoSize = true;
-            label18.Location = new Point(19, 37);
-            label18.Name = "label18";
-            label18.Size = new Size(29, 15);
-            label18.TabIndex = 26;
-            label18.Text = "S/M";
+            label_sm.Anchor = AnchorStyles.None;
+            label_sm.AutoSize = true;
+            label_sm.Location = new Point(19, 37);
+            label_sm.Name = "label_sm";
+            label_sm.Size = new Size(29, 15);
+            label_sm.TabIndex = 26;
+            label_sm.Text = "S/M";
             // 
-            // label19
+            // label_skl
             // 
-            label19.Anchor = AnchorStyles.None;
-            label19.AutoSize = true;
-            label19.Location = new Point(21, 67);
-            label19.Name = "label19";
-            label19.Size = new Size(26, 15);
-            label19.TabIndex = 27;
-            label19.Text = "SKL";
+            label_skl.Anchor = AnchorStyles.None;
+            label_skl.AutoSize = true;
+            label_skl.Location = new Point(21, 67);
+            label_skl.Name = "label_skl";
+            label_skl.Size = new Size(26, 15);
+            label_skl.TabIndex = 27;
+            label_skl.Text = "SKL";
             // 
-            // label20
+            // label_spd
             // 
-            label20.Anchor = AnchorStyles.None;
-            label20.AutoSize = true;
-            label20.Location = new Point(20, 97);
-            label20.Name = "label20";
-            label20.Size = new Size(28, 15);
-            label20.TabIndex = 28;
-            label20.Text = "SPD";
+            label_spd.Anchor = AnchorStyles.None;
+            label_spd.AutoSize = true;
+            label_spd.Location = new Point(20, 97);
+            label_spd.Name = "label_spd";
+            label_spd.Size = new Size(28, 15);
+            label_spd.TabIndex = 28;
+            label_spd.Text = "SPD";
             // 
-            // label21
+            // label_def
             // 
-            label21.Anchor = AnchorStyles.None;
-            label21.AutoSize = true;
-            label21.Location = new Point(20, 127);
-            label21.Name = "label21";
-            label21.Size = new Size(27, 15);
-            label21.TabIndex = 29;
-            label21.Text = "DEF";
+            label_def.Anchor = AnchorStyles.None;
+            label_def.AutoSize = true;
+            label_def.Location = new Point(20, 127);
+            label_def.Name = "label_def";
+            label_def.Size = new Size(27, 15);
+            label_def.TabIndex = 29;
+            label_def.Text = "DEF";
             // 
-            // label22
+            // label_res
             // 
-            label22.Anchor = AnchorStyles.None;
-            label22.AutoSize = true;
-            label22.Location = new Point(21, 157);
-            label22.Name = "label22";
-            label22.Size = new Size(26, 15);
-            label22.TabIndex = 30;
-            label22.Text = "RES";
+            label_res.Anchor = AnchorStyles.None;
+            label_res.AutoSize = true;
+            label_res.Location = new Point(21, 157);
+            label_res.Name = "label_res";
+            label_res.Size = new Size(26, 15);
+            label_res.TabIndex = 30;
+            label_res.Text = "RES";
             // 
             // numberBox_hp
             // 
@@ -231,15 +231,15 @@
             numberBox_hp.Value = new decimal(new int[] { 15, 0, 0, 0 });
             numberBox_hp.ValueChanged += numberBox_hp_changed;
             // 
-            // label15
+            // label_hp
             // 
-            label15.Anchor = AnchorStyles.None;
-            label15.AutoSize = true;
-            label15.Location = new Point(22, 7);
-            label15.Name = "label15";
-            label15.Size = new Size(23, 15);
-            label15.TabIndex = 25;
-            label15.Text = "HP";
+            label_hp.Anchor = AnchorStyles.None;
+            label_hp.AutoSize = true;
+            label_hp.Location = new Point(22, 7);
+            label_hp.Name = "label_hp";
+            label_hp.Size = new Size(23, 15);
+            label_hp.TabIndex = 25;
+            label_hp.Text = "HP";
             // 
             // button_createCharacter
             // 
@@ -297,12 +297,12 @@
         private NumericUpDown numberBox_spd;
         private NumericUpDown numberBox_skl;
         private NumericUpDown numberBox_sm;
-        private Label label18;
-        private Label label19;
-        private Label label20;
-        private Label label21;
-        private Label label22;
-        private Label label15;
+        private Label label_sm;
+        private Label label_skl;
+        private Label label_spd;
+        private Label label_def;
+        private Label label_res;
+        private Label label_hp;
         private NumericUpDown numberBox_hp;
         private Button button_createCharacter;
         private TextBox textBox_classDescription;

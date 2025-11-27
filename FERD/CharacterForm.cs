@@ -18,6 +18,33 @@ namespace FERD
             updateCharacter(c);
             _invSlots = [inv1, inv2, inv3, inv4, inv5, inv6, inv7, inv8, inv9, inv10];
             _formLoading = false;
+            setToolTips();
+        }
+        private void setToolTips()
+        {
+            label_hp.setHpToolTip();
+            label_sm.setSmToolTip();
+            label_skl.setSklToolTip();
+            label_spd.setSpdToolTip();
+            label_def.setDefToolTip();
+            label_res.setResToolTip();
+            label_mov.setToolTip("The number of places you can move in a single turn");
+            pictureBox_swords.setToolTip("Your expertise with swords.  You can only use weapons of this type that are of the same grade or lower");
+            pictureBox_axes.setToolTip("Your expertise with axes.  You can only use weapons of this type that are of the same grade or lower");
+            pictureBox_lances.setToolTip("Your expertise with lances.  You can only use weapons of this type that are of the same grade or lower");
+            pictureBox_bows.setToolTip("Your expertise with bows.  You can only use weapons of this type that are of the same grade or lower");
+            pictureBox_anima.setToolTip("Your expertise with anima magic.  You can only use weapons of this type that are of the same grade or lower");
+            pictureBox_light.setToolTip("Your expertise with light magic.  You can only use weapons of this type that are of the same grade or lower");
+            pictureBox_dark.setToolTip("Your expertise with dark magic.  You can only use weapons of this type that are of the same grade or lower");
+            pictureBox_staves.setToolTip("Your expertise with staves.  You can only use weapons of this type that are of the same grade or lower");
+            label_hit.setToolTip("Your hit rate (accuracy) bonus");
+            label_crt.setToolTip("If you hit the roll needed land a critical hit");
+            label_dmg.setToolTip("The amount of damage you will do with your current weapon (minus your target's def/res)");
+            label_as.setToolTip("Your attack speed in combat.  If it is 4+ more than your opponent's, you attack twice");
+            label_avd.setToolTip("The roll an opponent must make in order to hit you");
+            label_defCombat.setToolTip("Your defense stat.  If you are hit by a martial weapon, reduce the damage taken by this amount.");
+            label_resCombat.setToolTip("Your resistance stat.  If you are hit by a magic weapon, reduce the damage taken by this amount.");
+            label_movCombat.setToolTip("The number of places you can move in a single turn");
         }
 
         public void updateCharacter(Character c)
@@ -55,25 +82,30 @@ namespace FERD
 
         private void initWeaponRanks()
         {
-            table_weaponRanks.AddText(GetWeaponRankDisaply(Weapons.SWORDS), 1, 0);
-            table_weaponRanks.AddText(GetWeaponRankDisaply(Weapons.AXES),   1, 1);
-            table_weaponRanks.AddText(GetWeaponRankDisaply(Weapons.LANCES), 1, 2);
-            table_weaponRanks.AddText(GetWeaponRankDisaply(Weapons.BOWS),   1, 3);
-            table_weaponRanks.AddText(GetWeaponRankDisaply(Weapons.ANIMA),  3, 0);
-            table_weaponRanks.AddText(GetWeaponRankDisaply(Weapons.LIGHT),  3, 1);
-            table_weaponRanks.AddText(GetWeaponRankDisaply(Weapons.DARK),   3, 2);
-            table_weaponRanks.AddText(GetWeaponRankDisaply(Weapons.STAVES), 3, 3);
+            table_weaponRanks.AddText(GetWeaponRankDisplay(Weapons.SWORDS), 1, 0);
+            table_weaponRanks.AddText(GetWeaponRankDisplay(Weapons.AXES),   1, 1);
+            table_weaponRanks.AddText(GetWeaponRankDisplay(Weapons.LANCES), 1, 2);
+            table_weaponRanks.AddText(GetWeaponRankDisplay(Weapons.BOWS),   1, 3);
+            table_weaponRanks.AddText(GetWeaponRankDisplay(Weapons.ANIMA),  3, 0);
+            table_weaponRanks.AddText(GetWeaponRankDisplay(Weapons.LIGHT),  3, 1);
+            table_weaponRanks.AddText(GetWeaponRankDisplay(Weapons.DARK),   3, 2);
+            table_weaponRanks.AddText(GetWeaponRankDisplay(Weapons.STAVES), 3, 3);
         }
 
-        private string GetWeaponRankDisaply(string weaponType)
+        private string WeaponSkillToGrade(int weaponSkill)
         {
-            switch (_character.WeaponRanks[weaponType])
+            switch (weaponSkill)
             {
                 case 1: return "D";
                 case 2: return "B";
                 case 3: return "S";
                 default: return "-";
             }
+        }
+
+        private string GetWeaponRankDisplay(string weaponType)
+        {
+            return WeaponSkillToGrade(_character.WeaponRanks[weaponType]);
         }
 
         private void initInventory()
@@ -166,7 +198,9 @@ namespace FERD
 
             // Set description
             textBox_selectedItemDesc.Text = 
-                $"{_character.SelectedItem.Name}, Range: {_character.SelectedItem.Range}" +
+                $"{_character.SelectedItem.Name}" +
+                (!string.IsNullOrEmpty(_character.SelectedItem.Rank) ? $", Rank : {_character.SelectedItem.Rank}" : "") +
+                $", Range: {_character.SelectedItem.Range}" +
                 $"{Environment.NewLine}{_character.SelectedItem.Effects}";
 
             initCombatStats();
