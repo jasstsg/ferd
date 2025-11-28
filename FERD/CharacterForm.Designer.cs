@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             groupBox_characterDetails = new GroupBox();
+            button_uploadPortrait = new Button();
             groupBox8 = new GroupBox();
             button_selectInv10 = new Button();
             button_selectInv9 = new Button();
@@ -70,7 +71,7 @@
             comboBox_class3 = new ComboBox();
             comboBox_class2 = new ComboBox();
             comboBox_class1 = new ComboBox();
-            pictureBox1 = new PictureBox();
+            pictureBox_portrait = new PictureBox();
             groupBox2 = new GroupBox();
             table_stats = new TableLayoutPanel();
             label_sm = new Label();
@@ -106,7 +107,7 @@
             ((System.ComponentModel.ISupportInitialize)numberBox_exp).BeginInit();
             groupBox7.SuspendLayout();
             groupBox4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox_portrait).BeginInit();
             groupBox2.SuspendLayout();
             table_stats.SuspendLayout();
             tabControl1.SuspendLayout();
@@ -128,6 +129,7 @@
             // 
             // groupBox_characterDetails
             // 
+            groupBox_characterDetails.Controls.Add(button_uploadPortrait);
             groupBox_characterDetails.Controls.Add(groupBox8);
             groupBox_characterDetails.Controls.Add(button_levelUp);
             groupBox_characterDetails.Controls.Add(groupBox5);
@@ -135,13 +137,23 @@
             groupBox_characterDetails.Controls.Add(label2);
             groupBox_characterDetails.Controls.Add(groupBox7);
             groupBox_characterDetails.Controls.Add(groupBox4);
-            groupBox_characterDetails.Controls.Add(pictureBox1);
+            groupBox_characterDetails.Controls.Add(pictureBox_portrait);
             groupBox_characterDetails.Location = new Point(6, 6);
             groupBox_characterDetails.Name = "groupBox_characterDetails";
             groupBox_characterDetails.Size = new Size(440, 507);
             groupBox_characterDetails.TabIndex = 0;
             groupBox_characterDetails.TabStop = false;
             groupBox_characterDetails.Text = "Character Name - Level 0";
+            // 
+            // button_uploadPortrait
+            // 
+            button_uploadPortrait.Location = new Point(6, 148);
+            button_uploadPortrait.Name = "button_uploadPortrait";
+            button_uploadPortrait.Size = new Size(129, 25);
+            button_uploadPortrait.TabIndex = 28;
+            button_uploadPortrait.Text = "Upload Portrait";
+            button_uploadPortrait.UseVisualStyleBackColor = true;
+            button_uploadPortrait.Click += button_uploadPortrait_Click;
             // 
             // groupBox8
             // 
@@ -387,7 +399,7 @@
             // groupBox5
             // 
             groupBox5.Controls.Add(table_combatStats);
-            groupBox5.Location = new Point(6, 156);
+            groupBox5.Location = new Point(6, 175);
             groupBox5.Name = "groupBox5";
             groupBox5.Size = new Size(129, 225);
             groupBox5.TabIndex = 24;
@@ -522,20 +534,20 @@
             // groupBox7
             // 
             groupBox7.Controls.Add(textBox_features);
-            groupBox7.Location = new Point(5, 378);
+            groupBox7.Location = new Point(5, 406);
             groupBox7.Name = "groupBox7";
-            groupBox7.Size = new Size(130, 115);
+            groupBox7.Size = new Size(130, 87);
             groupBox7.TabIndex = 2;
             groupBox7.TabStop = false;
             groupBox7.Text = "Features";
             // 
             // textBox_features
             // 
-            textBox_features.Location = new Point(7, 18);
+            textBox_features.Location = new Point(6, 19);
             textBox_features.Multiline = true;
             textBox_features.Name = "textBox_features";
             textBox_features.ReadOnly = true;
-            textBox_features.Size = new Size(117, 91);
+            textBox_features.Size = new Size(117, 60);
             textBox_features.TabIndex = 0;
             // 
             // groupBox4
@@ -574,13 +586,15 @@
             comboBox_class1.Size = new Size(151, 23);
             comboBox_class1.TabIndex = 0;
             // 
-            // pictureBox1
+            // pictureBox_portrait
             // 
-            pictureBox1.Location = new Point(6, 22);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(128, 128);
-            pictureBox1.TabIndex = 0;
-            pictureBox1.TabStop = false;
+            pictureBox_portrait.Image = Properties.Resources.default_portrait;
+            pictureBox_portrait.Location = new Point(6, 15);
+            pictureBox_portrait.Name = "pictureBox_portrait";
+            pictureBox_portrait.Size = new Size(128, 128);
+            pictureBox_portrait.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox_portrait.TabIndex = 0;
+            pictureBox_portrait.TabStop = false;
             // 
             // groupBox2
             // 
@@ -926,7 +940,7 @@
             groupBox7.ResumeLayout(false);
             groupBox7.PerformLayout();
             groupBox4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox_portrait).EndInit();
             groupBox2.ResumeLayout(false);
             table_stats.ResumeLayout(false);
             table_stats.PerformLayout();
@@ -953,7 +967,7 @@
         #endregion
 
         private GroupBox groupBox_characterDetails;
-        private PictureBox pictureBox1;
+        private PictureBox pictureBox_portrait;
         private GroupBox groupBox2;
         private GroupBox groupBox7;
         private ComboBox comboBox_class3;
@@ -973,31 +987,6 @@
         private Label label_avd;
         private Label label_movCombat;
         private Label label_hp;
-        private GroupBox groupBox3;
-        private NumericUpDown numericUpDown6;
-        private TextBox textBox5;
-        private PictureBox pictureBox5;
-        private NumericUpDown numericUpDown5;
-        private TextBox textBox4;
-        private PictureBox pictureBox4;
-        private NumericUpDown numericUpDown4;
-        private TextBox textBox3;
-        private PictureBox pictureBox3;
-        private NumericUpDown numericUpDown3;
-        private TextBox textBox2;
-        private PictureBox pictureBox2;
-        private NumericUpDown numericUpDown7;
-        private TextBox textBox6;
-        private PictureBox pictureBox6;
-        private NumericUpDown numericUpDown8;
-        private TextBox textBox7;
-        private PictureBox pictureBox7;
-        private NumericUpDown numericUpDown9;
-        private TextBox textBox8;
-        private PictureBox pictureBox8;
-        private NumericUpDown numericUpDown10;
-        private TextBox textBox9;
-        private PictureBox pictureBox9;
         private TableLayoutPanel table_stats;
         private Label label_sm;
         private Label label_skl;
@@ -1048,5 +1037,6 @@
         private Label label_defCombat;
         private Label label_resCombat;
         private TextBox textBox_features;
+        private Button button_uploadPortrait;
     }
 }

@@ -1,20 +1,65 @@
 ﻿using FERD.Data;
-using System.Runtime.Intrinsics.X86;
+using FERD.Helpers;
 using System.Text.Json.Serialization;
-using static FERD.Data.Classes;
 
 namespace FERD.Models
 {
     public class Character
     {
+
+        public Character()
+        {
+            Id = Guid.NewGuid().ToString("N");
+        }
+
+        [JsonIgnore]
+        public Image Portrait
+        {
+            get
+            {
+                if (_portrait == null)
+                {
+                    return ResourceHelper.GetDefaultPortrait();
+                }
+                return _portrait.Deserialize();
+            }
+            set
+            {
+                _portrait = value.Serialize();
+            }
+        }
+
+        [JsonInclude]
+        private string _portrait { get; set; } 
+
+        [JsonInclude]
+        public string Id { get; private set; }
+
+        [JsonIgnore]
         private Stats _totalGrowthRates;
+
+        [JsonInclude]
         private string _class1 = Classes.Empty.Name;
+
+        [JsonInclude]
         private string _class2 = Classes.Empty.Name;
+
+        [JsonInclude]
         private string _class3 = Classes.Empty.Name;
+
+        [JsonInclude]
         public string Name { get; set; } = "Mark";
+        
+        [JsonInclude]
         public int Level { get; set; } = 0;
+
+        [JsonInclude]
         public int Experience { get; set; } = 0;
+
+        [JsonInclude]
         public Stats Stats { get; set; } = new Stats();
+
+        [JsonInclude]
         public Stats BaseGrowthRates { get; set; } = new Stats();
 
         [JsonIgnore]
@@ -105,17 +150,11 @@ namespace FERD.Models
         }
 
         [JsonIgnore]
-        public string Features
+        public string[] Features
         {
             get
             {
-                string feats = "";
-                IEnumerable<string> features = this.Class1.Features.Union(this.Class2.Features).Union(this.Class3.Features);
-                foreach (string feature in features)
-                {
-                    feats += $"{feature}{Environment.NewLine}";
-                }
-                return feats;
+                return this.Class1.Features.Union(this.Class2.Features).Union(this.Class3.Features).ToArray();
             }
         }
 

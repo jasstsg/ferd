@@ -6,7 +6,7 @@ namespace FERD
 {
     public partial class CharacterForm : Form
     {
-        private Character _character;
+        private Character? _character = null;
         private ComboBox[] _invSlots;
         private int _selectedInvSlot;
         private bool _formLoading = true;
@@ -19,6 +19,7 @@ namespace FERD
             _invSlots = [inv1, inv2, inv3, inv4, inv5, inv6, inv7, inv8, inv9, inv10];
             _formLoading = false;
             setToolTips();
+            pictureBox_portrait.Image = c.Portrait;
         }
         private void setToolTips()
         {
@@ -45,6 +46,7 @@ namespace FERD
             label_defCombat.setToolTip("Your defense stat.  If you are hit by a martial weapon, reduce the damage taken by this amount.");
             label_resCombat.setToolTip("Your resistance stat.  If you are hit by a magic weapon, reduce the damage taken by this amount.");
             label_movCombat.setToolTip("The number of places you can move in a single turn");
+            button_levelUp.setToolTip("You can level up once you have 100 or more experience!");
         }
 
         public void updateCharacter(Character c)
@@ -57,7 +59,7 @@ namespace FERD
         {
             groupBox_characterDetails.Text = $"{_character.Name} - Level {_character.Level}";
             numberBox_exp.Value = _character.Experience;
-            textBox_features.Text = _character.Features;
+            textBox_features.AddFeatures(_character.Features);
             _character.initClassDropdowns(comboBox_class1, comboBox_class2, comboBox_class3);
             initStats();
             initCombatStats();
@@ -83,12 +85,12 @@ namespace FERD
         private void initWeaponRanks()
         {
             table_weaponRanks.AddText(GetWeaponRankDisplay(Weapons.SWORDS), 1, 0);
-            table_weaponRanks.AddText(GetWeaponRankDisplay(Weapons.AXES),   1, 1);
+            table_weaponRanks.AddText(GetWeaponRankDisplay(Weapons.AXES), 1, 1);
             table_weaponRanks.AddText(GetWeaponRankDisplay(Weapons.LANCES), 1, 2);
-            table_weaponRanks.AddText(GetWeaponRankDisplay(Weapons.BOWS),   1, 3);
-            table_weaponRanks.AddText(GetWeaponRankDisplay(Weapons.ANIMA),  3, 0);
-            table_weaponRanks.AddText(GetWeaponRankDisplay(Weapons.LIGHT),  3, 1);
-            table_weaponRanks.AddText(GetWeaponRankDisplay(Weapons.DARK),   3, 2);
+            table_weaponRanks.AddText(GetWeaponRankDisplay(Weapons.BOWS), 1, 3);
+            table_weaponRanks.AddText(GetWeaponRankDisplay(Weapons.ANIMA), 3, 0);
+            table_weaponRanks.AddText(GetWeaponRankDisplay(Weapons.LIGHT), 3, 1);
+            table_weaponRanks.AddText(GetWeaponRankDisplay(Weapons.DARK), 3, 2);
             table_weaponRanks.AddText(GetWeaponRankDisplay(Weapons.STAVES), 3, 3);
         }
 
@@ -197,7 +199,7 @@ namespace FERD
             selectedInvSlot.BackColor = Color.LightBlue;
 
             // Set description
-            textBox_selectedItemDesc.Text = 
+            textBox_selectedItemDesc.Text =
                 $"{_character.SelectedItem.Name}" +
                 (!string.IsNullOrEmpty(_character.SelectedItem.Rank) ? $", Rank : {_character.SelectedItem.Rank}" : "") +
                 $", Range: {_character.SelectedItem.Range}" +
@@ -331,6 +333,30 @@ namespace FERD
         {
             _character.Inventory[10] = inv10.GetSelectedItem().Name;
             onItemChanged(10);
+        }
+
+        private void button_uploadPortrait_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.gif;*.bmp|All Files|*.*";
+                openFileDialog.Title = "Select an Image File";
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    try
+                    {
+                        Image newPortrait = Image.FromFile(openFileDialog.FileName);
+                        _character.Portrait = newPortrait;
+                        pictureBox_portrait.Image = newPortrait;
+                        _character.save();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error loading image: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
         }
     }
 }

@@ -15,5 +15,10 @@
 
             return csvContent;
         }
+
+        public static Image GetDefaultPortrait()
+        {
+            return Properties.Resources.default_portrait;
+        }
     }
 }

@@ -116,6 +116,16 @@ namespace FERD.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap default_portrait {
+            get {
+                object obj = ResourceManager.GetObject("default-portrait", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap FE_TTRPG_CLASS_TREE_drawio {
             get {
                 object obj = ResourceManager.GetObject("FE-TTRPG-CLASS-TREE.drawio", resourceCulture);

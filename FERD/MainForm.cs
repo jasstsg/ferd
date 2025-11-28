@@ -1,4 +1,5 @@
 ﻿using FERD.Data;
+using FERD.Helpers;
 using FERD.Models;
 using System.Text.Json;
 
@@ -99,7 +100,9 @@ namespace FERD
                 MessageBoxButtons.YesNo);
             if (result == DialogResult.Yes)
             {
+                // Delete the file
                 File.Delete(filepath);
+
                 this.loadCharacters();
             }
         }

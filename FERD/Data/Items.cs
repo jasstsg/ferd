@@ -63,8 +63,6 @@ namespace FERD.Data
             }
         }
 
-        private static List<Item>? _all = null;
-
         public static List<Item> All => ItemMap.Values.OrderBy(i => i.Name).Prepend(Empty).ToList();
 
         public static Item Empty => new Item()
