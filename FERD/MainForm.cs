@@ -1,5 +1,4 @@
 ﻿using FERD.Data;
-using FERD.Helpers;
 using FERD.Models;
 using System.Text.Json;
 
@@ -28,6 +27,10 @@ namespace FERD
             loadData();
             loadCharacters();
             textBox_characterFolder.Text = _characterDir;
+
+            string versionString = Environment.GetEnvironmentVariable("ClickOnce_CurrentVersion") ?? "0.0.0.0";
+            Version version = Version.Parse(versionString);
+            label_appVersion.Text = $"Version {version.ToString()}";
         }
 
         private void loadData()

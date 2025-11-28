@@ -38,6 +38,7 @@
             button_generateCharacter = new Button();
             groupBox1 = new GroupBox();
             button_openSaveFolder = new Button();
+            label_appVersion = new Label();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
@@ -139,11 +140,21 @@
             button_openSaveFolder.UseVisualStyleBackColor = true;
             button_openSaveFolder.Click += button_openSaveFolder_Click;
             // 
+            // label_appVersion
+            // 
+            label_appVersion.AutoSize = true;
+            label_appVersion.Location = new Point(391, 537);
+            label_appVersion.Name = "label_appVersion";
+            label_appVersion.Size = new Size(81, 15);
+            label_appVersion.TabIndex = 9;
+            label_appVersion.Text = "Version 0.0.0.0";
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(484, 561);
+            Controls.Add(label_appVersion);
             Controls.Add(groupBox1);
             Controls.Add(button_generateCharacter);
             Controls.Add(button_OpenPromotionTree);
@@ -156,6 +167,7 @@
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -170,5 +182,6 @@
         private Button button_generateCharacter;
         private GroupBox groupBox1;
         private Button button_openSaveFolder;
+        private Label label_appVersion;
     }
 }
