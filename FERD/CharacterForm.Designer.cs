@@ -31,27 +31,12 @@
             groupBox_characterDetails = new GroupBox();
             button_uploadPortrait = new Button();
             groupBox8 = new GroupBox();
-            button_selectInv10 = new Button();
-            button_selectInv9 = new Button();
-            button_selectInv8 = new Button();
-            button_selectInv7 = new Button();
-            button_selectInv6 = new Button();
-            button_selectInv5 = new Button();
-            button_selectInv4 = new Button();
-            button_selectInv3 = new Button();
-            button_selectInv2 = new Button();
-            button_selectInv1 = new Button();
+            invSlot5 = new FERD.Controls.InventorySlot();
+            invSlot3 = new FERD.Controls.InventorySlot();
+            invSlot2 = new FERD.Controls.InventorySlot();
+            invSlot4 = new FERD.Controls.InventorySlot();
+            invSlot1 = new FERD.Controls.InventorySlot();
             textBox_selectedItemDesc = new TextBox();
-            inv10 = new ComboBox();
-            inv9 = new ComboBox();
-            inv8 = new ComboBox();
-            inv7 = new ComboBox();
-            inv6 = new ComboBox();
-            inv5 = new ComboBox();
-            inv4 = new ComboBox();
-            inv3 = new ComboBox();
-            inv2 = new ComboBox();
-            inv1 = new ComboBox();
             button_levelUp = new Button();
             groupBox5 = new GroupBox();
             table_combatStats = new TableLayoutPanel();
@@ -157,27 +142,12 @@
             // 
             // groupBox8
             // 
-            groupBox8.Controls.Add(button_selectInv10);
-            groupBox8.Controls.Add(button_selectInv9);
-            groupBox8.Controls.Add(button_selectInv8);
-            groupBox8.Controls.Add(button_selectInv7);
-            groupBox8.Controls.Add(button_selectInv6);
-            groupBox8.Controls.Add(button_selectInv5);
-            groupBox8.Controls.Add(button_selectInv4);
-            groupBox8.Controls.Add(button_selectInv3);
-            groupBox8.Controls.Add(button_selectInv2);
-            groupBox8.Controls.Add(button_selectInv1);
+            groupBox8.Controls.Add(invSlot5);
+            groupBox8.Controls.Add(invSlot3);
+            groupBox8.Controls.Add(invSlot2);
+            groupBox8.Controls.Add(invSlot4);
+            groupBox8.Controls.Add(invSlot1);
             groupBox8.Controls.Add(textBox_selectedItemDesc);
-            groupBox8.Controls.Add(inv10);
-            groupBox8.Controls.Add(inv9);
-            groupBox8.Controls.Add(inv8);
-            groupBox8.Controls.Add(inv7);
-            groupBox8.Controls.Add(inv6);
-            groupBox8.Controls.Add(inv5);
-            groupBox8.Controls.Add(inv4);
-            groupBox8.Controls.Add(inv3);
-            groupBox8.Controls.Add(inv2);
-            groupBox8.Controls.Add(inv1);
             groupBox8.Location = new Point(141, 131);
             groupBox8.Name = "groupBox8";
             groupBox8.Size = new Size(299, 362);
@@ -185,105 +155,70 @@
             groupBox8.TabStop = false;
             groupBox8.Text = "Inventory";
             // 
-            // button_selectInv10
+            // invSlot5
             // 
-            button_selectInv10.Location = new Point(134, 333);
-            button_selectInv10.Name = "button_selectInv10";
-            button_selectInv10.Size = new Size(50, 23);
-            button_selectInv10.TabIndex = 20;
-            button_selectInv10.Text = "Select";
-            button_selectInv10.UseVisualStyleBackColor = true;
-            button_selectInv10.Click += button_selectInv10_Click;
+            invSlot5.LabelText = "/ 00";
+            invSlot5.Location = new Point(6, 188);
+            invSlot5.Name = "invSlot5";
+            invSlot5.NumericValue = new decimal(new int[] { 0, 0, 0, 0 });
+            invSlot5.SelectedItem = null;
+            invSlot5.Size = new Size(284, 23);
+            invSlot5.TabIndex = 22;
+            invSlot5.ButtonClick += button_selectInv5_Click;
+            invSlot5.ValueChanged += invSlot5_ValueChanged;
+            invSlot5.SelectedIndexChanged += inv5_SelectedIndexChanged;
             // 
-            // button_selectInv9
+            // invSlot3
             // 
-            button_selectInv9.Location = new Point(134, 304);
-            button_selectInv9.Name = "button_selectInv9";
-            button_selectInv9.Size = new Size(50, 23);
-            button_selectInv9.TabIndex = 19;
-            button_selectInv9.Text = "Select";
-            button_selectInv9.UseVisualStyleBackColor = true;
-            button_selectInv9.Click += button_selectInv9_Click;
+            invSlot3.LabelText = "/ 00";
+            invSlot3.Location = new Point(6, 130);
+            invSlot3.Name = "invSlot3";
+            invSlot3.NumericValue = new decimal(new int[] { 0, 0, 0, 0 });
+            invSlot3.SelectedItem = null;
+            invSlot3.Size = new Size(284, 23);
+            invSlot3.TabIndex = 21;
+            invSlot3.ButtonClick += button_selectInv3_Click;
+            invSlot3.ValueChanged += invSlot3_ValueChanged;
+            invSlot3.SelectedIndexChanged += inv3_SelectedIndexChanged;
             // 
-            // button_selectInv8
+            // invSlot2
             // 
-            button_selectInv8.Location = new Point(134, 275);
-            button_selectInv8.Name = "button_selectInv8";
-            button_selectInv8.Size = new Size(50, 23);
-            button_selectInv8.TabIndex = 18;
-            button_selectInv8.Text = "Select";
-            button_selectInv8.UseVisualStyleBackColor = true;
-            button_selectInv8.Click += button_selectInv8_Click;
+            invSlot2.LabelText = "/ 00";
+            invSlot2.Location = new Point(6, 101);
+            invSlot2.Name = "invSlot2";
+            invSlot2.NumericValue = new decimal(new int[] { 0, 0, 0, 0 });
+            invSlot2.SelectedItem = null;
+            invSlot2.Size = new Size(284, 23);
+            invSlot2.TabIndex = 20;
+            invSlot2.ButtonClick += button_selectInv2_Click;
+            invSlot2.ValueChanged += invSlot2_ValueChanged;
+            invSlot2.SelectedIndexChanged += inv2_SelectedIndexChanged;
             // 
-            // button_selectInv7
+            // invSlot4
             // 
-            button_selectInv7.Location = new Point(134, 246);
-            button_selectInv7.Name = "button_selectInv7";
-            button_selectInv7.Size = new Size(50, 23);
-            button_selectInv7.TabIndex = 17;
-            button_selectInv7.Text = "Select";
-            button_selectInv7.UseVisualStyleBackColor = true;
-            button_selectInv7.Click += button_selectInv7_Click;
+            invSlot4.LabelText = "/ 00";
+            invSlot4.Location = new Point(6, 159);
+            invSlot4.Name = "invSlot4";
+            invSlot4.NumericValue = new decimal(new int[] { 0, 0, 0, 0 });
+            invSlot4.SelectedItem = null;
+            invSlot4.Size = new Size(284, 23);
+            invSlot4.TabIndex = 19;
+            invSlot4.ButtonClick += button_selectInv4_Click;
+            invSlot4.ValueChanged += invSlot4_ValueChanged;
+            invSlot4.SelectedIndexChanged += inv4_SelectedIndexChanged;
             // 
-            // button_selectInv6
+            // invSlot1
             // 
-            button_selectInv6.Location = new Point(134, 217);
-            button_selectInv6.Name = "button_selectInv6";
-            button_selectInv6.Size = new Size(50, 23);
-            button_selectInv6.TabIndex = 16;
-            button_selectInv6.Text = "Select";
-            button_selectInv6.UseVisualStyleBackColor = true;
-            button_selectInv6.Click += button_selectInv6_Click;
-            // 
-            // button_selectInv5
-            // 
-            button_selectInv5.Location = new Point(134, 188);
-            button_selectInv5.Name = "button_selectInv5";
-            button_selectInv5.Size = new Size(50, 23);
-            button_selectInv5.TabIndex = 15;
-            button_selectInv5.Text = "Select";
-            button_selectInv5.UseVisualStyleBackColor = true;
-            button_selectInv5.Click += button_selectInv5_Click;
-            // 
-            // button_selectInv4
-            // 
-            button_selectInv4.Location = new Point(134, 159);
-            button_selectInv4.Name = "button_selectInv4";
-            button_selectInv4.Size = new Size(50, 23);
-            button_selectInv4.TabIndex = 14;
-            button_selectInv4.Text = "Select";
-            button_selectInv4.UseVisualStyleBackColor = true;
-            button_selectInv4.Click += button_selectInv4_Click;
-            // 
-            // button_selectInv3
-            // 
-            button_selectInv3.Location = new Point(134, 130);
-            button_selectInv3.Name = "button_selectInv3";
-            button_selectInv3.Size = new Size(50, 23);
-            button_selectInv3.TabIndex = 13;
-            button_selectInv3.Text = "Select";
-            button_selectInv3.UseVisualStyleBackColor = true;
-            button_selectInv3.Click += button_selectInv3_Click;
-            // 
-            // button_selectInv2
-            // 
-            button_selectInv2.Location = new Point(134, 101);
-            button_selectInv2.Name = "button_selectInv2";
-            button_selectInv2.Size = new Size(50, 23);
-            button_selectInv2.TabIndex = 12;
-            button_selectInv2.Text = "Select";
-            button_selectInv2.UseVisualStyleBackColor = true;
-            button_selectInv2.Click += button_selectInv2_Click;
-            // 
-            // button_selectInv1
-            // 
-            button_selectInv1.Location = new Point(134, 72);
-            button_selectInv1.Name = "button_selectInv1";
-            button_selectInv1.Size = new Size(50, 23);
-            button_selectInv1.TabIndex = 11;
-            button_selectInv1.Text = "Select";
-            button_selectInv1.UseVisualStyleBackColor = true;
-            button_selectInv1.Click += button_selectInv1_Click;
+            invSlot1.LabelText = "/ 00";
+            invSlot1.Location = new Point(6, 72);
+            invSlot1.Name = "invSlot1";
+            invSlot1.NumericValue = new decimal(new int[] { 0, 0, 0, 0 });
+            invSlot1.SelectedItem = null;
+            invSlot1.Size = new Size(284, 23);
+            invSlot1.TabIndex = 16;
+            invSlot1.ButtonClick += button_selectInv1_Click;
+            invSlot1.ValueChanged += invSlot1_ValueChanged;
+            invSlot1.SelectedIndexChanged += inv1_SelectedIndexChanged;
             // 
             // textBox_selectedItemDesc
             // 
@@ -293,96 +228,6 @@
             textBox_selectedItemDesc.ReadOnly = true;
             textBox_selectedItemDesc.Size = new Size(286, 48);
             textBox_selectedItemDesc.TabIndex = 10;
-            // 
-            // inv10
-            // 
-            inv10.FormattingEnabled = true;
-            inv10.Location = new Point(7, 333);
-            inv10.Name = "inv10";
-            inv10.Size = new Size(121, 23);
-            inv10.TabIndex = 9;
-            inv10.SelectedIndexChanged += inv10_SelectedIndexChanged;
-            // 
-            // inv9
-            // 
-            inv9.FormattingEnabled = true;
-            inv9.Location = new Point(7, 304);
-            inv9.Name = "inv9";
-            inv9.Size = new Size(121, 23);
-            inv9.TabIndex = 8;
-            inv9.SelectedIndexChanged += inv9_SelectedIndexChanged;
-            // 
-            // inv8
-            // 
-            inv8.FormattingEnabled = true;
-            inv8.Location = new Point(7, 275);
-            inv8.Name = "inv8";
-            inv8.Size = new Size(121, 23);
-            inv8.TabIndex = 7;
-            inv8.SelectedIndexChanged += inv8_SelectedIndexChanged;
-            // 
-            // inv7
-            // 
-            inv7.FormattingEnabled = true;
-            inv7.Location = new Point(7, 246);
-            inv7.Name = "inv7";
-            inv7.Size = new Size(121, 23);
-            inv7.TabIndex = 6;
-            inv7.SelectedIndexChanged += inv7_SelectedIndexChanged;
-            // 
-            // inv6
-            // 
-            inv6.FormattingEnabled = true;
-            inv6.Location = new Point(7, 217);
-            inv6.Name = "inv6";
-            inv6.Size = new Size(121, 23);
-            inv6.TabIndex = 5;
-            inv6.SelectedIndexChanged += inv6_SelectedIndexChanged;
-            // 
-            // inv5
-            // 
-            inv5.FormattingEnabled = true;
-            inv5.Location = new Point(7, 188);
-            inv5.Name = "inv5";
-            inv5.Size = new Size(121, 23);
-            inv5.TabIndex = 4;
-            inv5.SelectedIndexChanged += inv5_SelectedIndexChanged;
-            // 
-            // inv4
-            // 
-            inv4.FormattingEnabled = true;
-            inv4.Location = new Point(7, 159);
-            inv4.Name = "inv4";
-            inv4.Size = new Size(121, 23);
-            inv4.TabIndex = 3;
-            inv4.SelectedIndexChanged += inv4_SelectedIndexChanged;
-            // 
-            // inv3
-            // 
-            inv3.FormattingEnabled = true;
-            inv3.Location = new Point(7, 130);
-            inv3.Name = "inv3";
-            inv3.Size = new Size(121, 23);
-            inv3.TabIndex = 2;
-            inv3.SelectedIndexChanged += inv3_SelectedIndexChanged;
-            // 
-            // inv2
-            // 
-            inv2.FormattingEnabled = true;
-            inv2.Location = new Point(7, 101);
-            inv2.Name = "inv2";
-            inv2.Size = new Size(121, 23);
-            inv2.TabIndex = 1;
-            inv2.SelectedIndexChanged += inv2_SelectedIndexChanged;
-            // 
-            // inv1
-            // 
-            inv1.FormattingEnabled = true;
-            inv1.Location = new Point(7, 72);
-            inv1.Name = "inv1";
-            inv1.Size = new Size(121, 23);
-            inv1.TabIndex = 0;
-            inv1.SelectedIndexChanged += inv1_SelectedIndexChanged;
             // 
             // button_levelUp
             // 
@@ -1013,30 +858,18 @@
         private TableLayoutPanel table_combatStats;
         private Button button_levelUp;
         private GroupBox groupBox8;
-        private ComboBox inv8;
-        private ComboBox inv7;
-        private ComboBox inv6;
-        private ComboBox inv5;
-        private ComboBox inv4;
-        private ComboBox inv3;
-        private ComboBox inv2;
-        private ComboBox inv1;
-        private ComboBox inv9;
-        private ComboBox inv10;
         private TextBox textBox_selectedItemDesc;
-        private Button button_selectInv10;
-        private Button button_selectInv9;
-        private Button button_selectInv8;
-        private Button button_selectInv7;
-        private Button button_selectInv6;
-        private Button button_selectInv5;
-        private Button button_selectInv4;
-        private Button button_selectInv3;
-        private Button button_selectInv2;
-        private Button button_selectInv1;
         private Label label_defCombat;
         private Label label_resCombat;
         private TextBox textBox_features;
         private Button button_uploadPortrait;
+        private Controls.InventorySlot invSlot1;
+        private Controls.InventorySlot inventorySlot2;
+        private Controls.InventorySlot inventorySlot1;
+        private Controls.InventorySlot inventorySlot4;
+        private Controls.InventorySlot invSlot4;
+        private Controls.InventorySlot invSlot5;
+        private Controls.InventorySlot invSlot3;
+        private Controls.InventorySlot invSlot2;
     }
 }

@@ -1,25 +1,25 @@
-﻿using FERD.Data;
-using System.Runtime.CompilerServices;
+﻿using FERD.Controls;
+using FERD.Data;
+using FERD.Helpers;
 using System.Text.Json.Serialization;
-using System.Windows.Forms;
 
 namespace FERD.Models
 {
     public class Inventory
     {
-        public string Slot1 { get; set; } = Items.Empty.Name;
-        public string Slot2 { get; set; } = Items.Empty.Name;
-        public string Slot3 { get; set; } = Items.Empty.Name;
-        public string Slot4 { get; set; } = Items.Empty.Name;
-        public string Slot5 { get; set; } = Items.Empty.Name;
-        public string Slot6 { get; set; } = Items.Empty.Name;
-        public string Slot7 { get; set; } = Items.Empty.Name;
-        public string Slot8 { get; set; } = Items.Empty.Name;
-        public string Slot9 { get; set; } = Items.Empty.Name;
-        public string Slot10 { get; set; } = Items.Empty.Name;
+        [JsonInclude]
+        public Slot Slot1 { get; set; } = new Slot();
+        [JsonInclude]
+        public Slot Slot2 { get; set; } = new Slot();
+        [JsonInclude]
+        public Slot Slot3 { get; set; } = new Slot();
+        [JsonInclude]
+        public Slot Slot4 { get; set; } = new Slot();
+        [JsonInclude]
+        public Slot Slot5 { get; set; } = new Slot();
 
         [JsonIgnore]
-        public string this[int slot]
+        public Slot this[int slot]
         {
             get
             {
@@ -30,11 +30,6 @@ namespace FERD.Models
                     case 3: return Slot3;
                     case 4: return Slot4;
                     case 5: return Slot5;
-                    case 6: return Slot6;
-                    case 7: return Slot7;
-                    case 8: return Slot8;
-                    case 9: return Slot9;
-                    case 10: return Slot10;
                     default: throw new Exception($"Slot '{slot}' does not exist on the 'Inventory' object");
                 }
             }
@@ -48,14 +43,44 @@ namespace FERD.Models
                     case 3: Slot3 = value; break;
                     case 4: Slot4 = value; break;
                     case 5: Slot5 = value; break;
-                    case 6: Slot6 = value; break;
-                    case 7: Slot7 = value; break;
-                    case 8: Slot8 = value; break;
-                    case 9: Slot9 = value; break;
-                    case 10: Slot10 = value; break;
                     default: throw new Exception($"Slot '{slot}' does not exist on the 'Inventory' object");
                 }
             }
         } 
+    }
+
+    public class Slot
+    {
+        /// <summary>
+        /// The name of the item in this slot
+        /// </summary>
+        [JsonInclude]
+        public string Name { get; set; }
+        /// <summary>
+        /// The remaining durability of the item in this slot
+        /// </summary>
+        [JsonInclude]
+        public int Uses { get; set; }
+
+        public Slot()
+        {
+            Name = Items.Empty.Name;
+            Uses = 0;
+        }
+    }
+
+    public static class SlotHelper
+    {
+        public static void Set(this Slot slot, Item item)
+        {
+            slot.Name = item.Name;
+            slot.Uses = item.Uses;
+        }
+
+        public static void Set(this Slot characterInvSlot, InventorySlot invSlotDropdown)
+        {
+            Item item = invSlotDropdown.GetSelectedItem();
+            characterInvSlot.Set(item);
+        }
     }
 }

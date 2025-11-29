@@ -45,6 +45,7 @@ namespace FERD.Data
                                 Name = rowSplit[ICHI.NAME],
                                 Rank = rowSplit[ICHI.RANK],
                                 Range = rowSplit[ICHI.RANGE],
+                                Uses = int.Parse(rowSplit[ICHI.USES]),
                                 Wt = int.Parse(rowSplit[ICHI.WT]),
                                 Mt = int.Parse(rowSplit[ICHI.MT]),
                                 Hit = int.Parse(rowSplit[ICHI.HIT]),
@@ -63,6 +64,11 @@ namespace FERD.Data
             }
         }
 
+        public static Item Get(string itemName)
+        {
+            return _itemMap[itemName];
+        }
+
         public static List<Item> All => ItemMap.Values.OrderBy(i => i.Name).Prepend(Empty).ToList();
 
         public static Item Empty => new Item()
@@ -70,6 +76,7 @@ namespace FERD.Data
             Name = " - ",
             Rank = " - ",
             Range = " - ",
+            Uses = 0,
             Wt = 0,
             Mt = 0,
             Hit = 0,

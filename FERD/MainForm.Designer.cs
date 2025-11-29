@@ -54,7 +54,7 @@
             // 
             // button_setCharacterFolder
             // 
-            button_setCharacterFolder.Location = new Point(341, 21);
+            button_setCharacterFolder.Location = new Point(341, 22);
             button_setCharacterFolder.Name = "button_setCharacterFolder";
             button_setCharacterFolder.Size = new Size(55, 23);
             button_setCharacterFolder.TabIndex = 1;
@@ -132,7 +132,7 @@
             // 
             // button_openSaveFolder
             // 
-            button_openSaveFolder.Location = new Point(398, 21);
+            button_openSaveFolder.Location = new Point(398, 22);
             button_openSaveFolder.Name = "button_openSaveFolder";
             button_openSaveFolder.Size = new Size(55, 23);
             button_openSaveFolder.TabIndex = 3;

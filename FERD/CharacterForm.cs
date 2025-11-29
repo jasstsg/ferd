@@ -1,3 +1,4 @@
+using FERD.Controls;
 using FERD.Data;
 using FERD.Helpers;
 using FERD.Models;
@@ -7,16 +8,16 @@ namespace FERD
     public partial class CharacterForm : Form
     {
         private Character? _character = null;
-        private ComboBox[] _invSlots;
         private int _selectedInvSlot;
         private bool _formLoading = true;
+
+        private InventorySlot[] InventorySlots => [invSlot1, invSlot2, invSlot3, invSlot4, invSlot5];
         public CharacterForm() : this(new Character()) { }
 
         public CharacterForm(Character c)
         {
             InitializeComponent();
             updateCharacter(c);
-            _invSlots = [inv1, inv2, inv3, inv4, inv5, inv6, inv7, inv8, inv9, inv10];
             _formLoading = false;
             setToolTips();
             pictureBox_portrait.Image = c.Portrait;
@@ -94,34 +95,20 @@ namespace FERD
             table_weaponRanks.AddText(GetWeaponRankDisplay(Weapons.STAVES), 3, 3);
         }
 
-        private string WeaponSkillToGrade(int weaponSkill)
-        {
-            switch (weaponSkill)
-            {
-                case 1: return "D";
-                case 2: return "B";
-                case 3: return "S";
-                default: return "-";
-            }
-        }
-
         private string GetWeaponRankDisplay(string weaponType)
         {
-            return WeaponSkillToGrade(_character.WeaponRanks[weaponType]);
+            return ItemHelper.WeaponSkillToGrade(_character.WeaponRanks[weaponType]);
         }
 
         private void initInventory()
         {
-            inv1.initInvDropdown(_character.Inventory.Slot1);
-            inv2.initInvDropdown(_character.Inventory.Slot2);
-            inv3.initInvDropdown(_character.Inventory.Slot3);
-            inv4.initInvDropdown(_character.Inventory.Slot4);
-            inv5.initInvDropdown(_character.Inventory.Slot5);
-            inv6.initInvDropdown(_character.Inventory.Slot6);
-            inv7.initInvDropdown(_character.Inventory.Slot7);
-            inv8.initInvDropdown(_character.Inventory.Slot8);
-            inv9.initInvDropdown(_character.Inventory.Slot9);
-            inv10.initInvDropdown(_character.Inventory.Slot10);
+            Slot slot;
+            for (int i = 0; i < InventorySlots.Length; i++)
+            {
+                slot = _character.Inventory[i + 1];
+                InventorySlots[i].SetSelectedItem(slot.Name, slot.Uses);
+                InventorySlots[i].SetDisplay(_character);
+            }
         }
 
         private void initCombatStats()
@@ -131,7 +118,7 @@ namespace FERD
             string att_spd = " - ";
             string dmg = " - ";
 
-            if (_character.IsSelectedWeaponAllowed)
+            if (_character.IsEquippedWeaponAllowed)
             {
                 hit = _character.CombatStats.HIT.ToString();
                 hit = _character.CombatStats.HIT > 0 ? "+" + hit : hit;
@@ -177,33 +164,35 @@ namespace FERD
             initLevelUpButton();
         }
 
-        private void selectInvSlots(int slotNum)
+        private void equipInvSlot(int slotNum)
         {
             _selectedInvSlot = slotNum;
-            ComboBox selectedInvSlot = _invSlots[slotNum - 1];
+            InventorySlot selectedInvSlot = InventorySlots[slotNum - 1];
+            Item prevEquippedItem = _character.EquippedItem;
 
-            // Return early if no item in selected slot
-            _character.SelectedItem = selectedInvSlot.GetSelectedItem();
-            if (_character.SelectedItem.Name.Equals(Items.Empty.Name))
+            // Return early if no item in selected slot, or it is not equippable 
+            _character.EquippedItem = selectedInvSlot.GetSelectedItem();
+            if (_character.EquippedItem.IsEmpty || !_character.IsEquippedWeaponAllowed)
             {
+                _character.EquippedItem = prevEquippedItem;
                 return;
             }
 
-            // Unhighlight all slots
-            foreach (ComboBox inv in _invSlots)
+            // Reassess all slots
+            foreach (InventorySlot inv in InventorySlots)
             {
-                inv.BackColor = SystemColors.Window;
+                inv.SetDisplay(_character);
             }
 
             // Higlight selected slot
-            selectedInvSlot.BackColor = Color.LightBlue;
+            selectedInvSlot.DisplaySelected();
 
             // Set description
             textBox_selectedItemDesc.Text =
-                $"{_character.SelectedItem.Name}" +
-                (!string.IsNullOrEmpty(_character.SelectedItem.Rank) ? $", Rank : {_character.SelectedItem.Rank}" : "") +
-                $", Range: {_character.SelectedItem.Range}" +
-                $"{Environment.NewLine}{_character.SelectedItem.Effects}";
+                $"{_character.EquippedItem.Name}" +
+                (!string.IsNullOrEmpty(_character.EquippedItem.Rank) ? $", Rank : {_character.EquippedItem.Rank}" : "") +
+                $", Range: {_character.EquippedItem.Range}" +
+                $"{Environment.NewLine}{_character.EquippedItem.Effects}";
 
             initCombatStats();
         }
@@ -213,7 +202,7 @@ namespace FERD
             // Update Selected Inventory Slot
             if (_selectedInvSlot == slotNum)
             {
-                selectInvSlots(_selectedInvSlot);
+                equipInvSlot(_selectedInvSlot);
             }
 
             // Save Character (but only if the form has initialized already)
@@ -221,118 +210,73 @@ namespace FERD
             {
                 return;
             }
-            _character.Inventory[slotNum] = _invSlots[slotNum - 1].GetSelectedItem().Name;
+
+            // Update inventory slot on the form
+            InventorySlot slot = InventorySlots[slotNum - 1];
+            slot.OnSelectedItemChanged();
+
+            // Update character inventory data
+            _character.Inventory[slotNum].Set(InventorySlots[slotNum - 1]);
+            FileHelper.save(_character);
+
+            // Determine display behaviour for this slot
+            slot.SetDisplay(_character);
+        }
+
+        private void OnValueChanged(int slotNum)
+        {
+            _character.Inventory[slotNum].Uses = (int)InventorySlots[slotNum - 1].NumberBox.Value;
             FileHelper.save(_character);
         }
 
         private void button_selectInv1_Click(object sender, EventArgs e)
         {
-            selectInvSlots(1);
+            equipInvSlot(1);
         }
 
         private void button_selectInv2_Click(object sender, EventArgs e)
         {
-            selectInvSlots(2);
+            equipInvSlot(2);
         }
 
         private void button_selectInv3_Click(object sender, EventArgs e)
         {
-            selectInvSlots(3);
+            equipInvSlot(3);
         }
 
         private void button_selectInv4_Click(object sender, EventArgs e)
         {
-            selectInvSlots(4);
+            equipInvSlot(4);
         }
 
         private void button_selectInv5_Click(object sender, EventArgs e)
         {
-            selectInvSlots(5);
-        }
-
-        private void button_selectInv6_Click(object sender, EventArgs e)
-        {
-            selectInvSlots(6);
-        }
-
-        private void button_selectInv7_Click(object sender, EventArgs e)
-        {
-            selectInvSlots(7);
-        }
-
-        private void button_selectInv8_Click(object sender, EventArgs e)
-        {
-            selectInvSlots(8);
-        }
-
-        private void button_selectInv9_Click(object sender, EventArgs e)
-        {
-            selectInvSlots(9);
-        }
-
-        private void button_selectInv10_Click(object sender, EventArgs e)
-        {
-            selectInvSlots(10);
+            equipInvSlot(5);
         }
 
         private void inv1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            _character.Inventory[1] = inv1.GetSelectedItem().Name;
             onItemChanged(1);
         }
 
         private void inv2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            _character.Inventory[2] = inv2.GetSelectedItem().Name;
             onItemChanged(2);
         }
 
         private void inv3_SelectedIndexChanged(object sender, EventArgs e)
         {
-            _character.Inventory[3] = inv3.GetSelectedItem().Name;
             onItemChanged(3);
         }
 
         private void inv4_SelectedIndexChanged(object sender, EventArgs e)
         {
-            _character.Inventory[4] = inv4.GetSelectedItem().Name;
             onItemChanged(4);
         }
 
         private void inv5_SelectedIndexChanged(object sender, EventArgs e)
         {
-            _character.Inventory[5] = inv5.GetSelectedItem().Name;
             onItemChanged(5);
-        }
-
-        private void inv6_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            _character.Inventory[6] = inv6.GetSelectedItem().Name;
-            onItemChanged(6);
-        }
-
-        private void inv7_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            _character.Inventory[7] = inv7.GetSelectedItem().Name;
-            onItemChanged(7);
-        }
-
-        private void inv8_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            _character.Inventory[8] = inv8.GetSelectedItem().Name;
-            onItemChanged(8);
-        }
-
-        private void inv9_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            _character.Inventory[9] = inv9.GetSelectedItem().Name;
-            onItemChanged(9);
-        }
-
-        private void inv10_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            _character.Inventory[10] = inv10.GetSelectedItem().Name;
-            onItemChanged(10);
         }
 
         private void button_uploadPortrait_Click(object sender, EventArgs e)
@@ -357,6 +301,31 @@ namespace FERD
                     }
                 }
             }
+        }
+
+        private void invSlot1_ValueChanged(object sender, EventArgs e)
+        {
+            OnValueChanged(1);
+        }
+
+        private void invSlot2_ValueChanged(object sender, EventArgs e)
+        {
+            OnValueChanged(2);
+        }
+
+        private void invSlot3_ValueChanged(object sender, EventArgs e)
+        {
+            OnValueChanged(3);
+        }
+
+        private void invSlot4_ValueChanged(object sender, EventArgs e)
+        {
+            OnValueChanged(4);
+        }
+
+        private void invSlot5_ValueChanged(object sender, EventArgs e)
+        {
+            OnValueChanged(5);
         }
     }
 }

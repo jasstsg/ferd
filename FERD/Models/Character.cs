@@ -110,19 +110,19 @@ namespace FERD.Models
             get
             {
                 // Weapon accuracy + (Skill x 2) + weapon rank
-                int hit = (SelectedItem.Hit  + (Stats.SKL * 2) + 0);
+                int hit = (EquippedItem.Hit  + (Stats.SKL * 2) + 0);
                 hit -= 100; // So we can get just the 'bonus'
                 hit /= 5;   // To scale it from a percentage to a number better suited for a 'D20' roll
 
                 // Weapon critical + (skill / 2) + class bonus + weapon rank
-                int crt = SelectedItem.Crt + (Stats.SKL / 2) + 0 + 0;
+                int crt = EquippedItem.Crt + (Stats.SKL / 2) + 0 + 0;
                 crt /= 5;   // To scale it from a percentage to a number better suited for a 'D20' roll
 
                 // Weapon might + Strength/Magic
-                int dmg = SelectedItem.Mt + Stats.SM;
+                int dmg = EquippedItem.Mt + Stats.SM;
 
                 // Speed - weapon weight
-                int att_spd = Stats.SPD - Math.Max(SelectedItem.Wt - (Stats.SM / 2), 0);
+                int att_spd = Stats.SPD - Math.Max(EquippedItem.Wt - (Stats.SM / 2), 0);
 
                 // (Attack Speed + weapon rank) x 2 
                 int avd = att_spd; // * 2;
@@ -193,18 +193,18 @@ namespace FERD.Models
         }
 
         [JsonIgnore]
-        public bool IsSelectedWeaponAllowed
+        public bool IsEquippedWeaponAllowed => IsWeaponAllowed(this.EquippedItem);
+
+        public bool IsWeaponAllowed(Item weapon)
         {
-            get
-            {
-                return this.AllowedWeapons.Contains(this.SelectedItem.Type);
-            }
+            return this.AllowedWeapons.Contains(weapon.Type) &&
+                this.WeaponRanks[weapon.Type] >= ItemHelper.WeaponGradeToSkill(weapon.Rank);
         }
 
         public Inventory Inventory { get; set; } = new Inventory();
 
         [JsonIgnore]
-        public Item SelectedItem { get; set; } = Items.Empty;
+        public Item EquippedItem { get; set; } = Items.Empty;
 
         [JsonIgnore]
         public Stats TotalGrowthRates 
