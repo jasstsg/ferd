@@ -10,7 +10,11 @@ namespace FERD.Models
         public Character()
         {
             Id = Guid.NewGuid().ToString("N");
+            _schemaVersion = "v1";
         }
+
+        [JsonInclude]
+        private string _schemaVersion = "";
 
         [JsonIgnore]
         public Image Portrait

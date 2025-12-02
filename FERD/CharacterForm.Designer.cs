@@ -85,6 +85,7 @@
             tableLayoutPanel2 = new TableLayoutPanel();
             label13 = new Label();
             label14 = new Label();
+            backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             groupBox_characterDetails.SuspendLayout();
             groupBox8.SuspendLayout();
             groupBox5.SuspendLayout();
@@ -150,7 +151,7 @@
             groupBox8.Controls.Add(textBox_selectedItemDesc);
             groupBox8.Location = new Point(141, 131);
             groupBox8.Name = "groupBox8";
-            groupBox8.Size = new Size(299, 362);
+            groupBox8.Size = new Size(299, 269);
             groupBox8.TabIndex = 27;
             groupBox8.TabStop = false;
             groupBox8.Text = "Inventory";
@@ -158,75 +159,90 @@
             // invSlot5
             // 
             invSlot5.LabelText = "/ 00";
-            invSlot5.Location = new Point(6, 188);
+            invSlot5.Location = new Point(6, 239);
             invSlot5.Name = "invSlot5";
             invSlot5.NumericValue = new decimal(new int[] { 0, 0, 0, 0 });
             invSlot5.SelectedItem = null;
             invSlot5.Size = new Size(284, 23);
             invSlot5.TabIndex = 22;
-            invSlot5.ButtonClick += button_selectInv5_Click;
+            invSlot5.ButtonEquipClick += button_selectInv5_Click;
+            invSlot5.ButtonUpClick += swapSlots4and5;
+            invSlot5.ButtonDownClick += swapSlots5and1;
             invSlot5.ValueChanged += invSlot5_ValueChanged;
             invSlot5.SelectedIndexChanged += inv5_SelectedIndexChanged;
+            invSlot5.Enter += invSlot5_Enter;
             // 
             // invSlot3
             // 
             invSlot3.LabelText = "/ 00";
-            invSlot3.Location = new Point(6, 130);
+            invSlot3.Location = new Point(6, 181);
             invSlot3.Name = "invSlot3";
             invSlot3.NumericValue = new decimal(new int[] { 0, 0, 0, 0 });
             invSlot3.SelectedItem = null;
             invSlot3.Size = new Size(284, 23);
             invSlot3.TabIndex = 21;
-            invSlot3.ButtonClick += button_selectInv3_Click;
+            invSlot3.ButtonEquipClick += button_selectInv3_Click;
+            invSlot3.ButtonUpClick += swapSlots2and3;
+            invSlot3.ButtonDownClick += swapSlots3and4;
             invSlot3.ValueChanged += invSlot3_ValueChanged;
             invSlot3.SelectedIndexChanged += inv3_SelectedIndexChanged;
+            invSlot3.Enter += invSlot3_Enter;
             // 
             // invSlot2
             // 
             invSlot2.LabelText = "/ 00";
-            invSlot2.Location = new Point(6, 101);
+            invSlot2.Location = new Point(6, 152);
             invSlot2.Name = "invSlot2";
             invSlot2.NumericValue = new decimal(new int[] { 0, 0, 0, 0 });
             invSlot2.SelectedItem = null;
             invSlot2.Size = new Size(284, 23);
             invSlot2.TabIndex = 20;
-            invSlot2.ButtonClick += button_selectInv2_Click;
+            invSlot2.ButtonEquipClick += button_selectInv2_Click;
+            invSlot2.ButtonUpClick += swapSlots1and2;
+            invSlot2.ButtonDownClick += swapSlots2and3;
             invSlot2.ValueChanged += invSlot2_ValueChanged;
             invSlot2.SelectedIndexChanged += inv2_SelectedIndexChanged;
+            invSlot2.Enter += invSlot2_Enter;
             // 
             // invSlot4
             // 
             invSlot4.LabelText = "/ 00";
-            invSlot4.Location = new Point(6, 159);
+            invSlot4.Location = new Point(6, 210);
             invSlot4.Name = "invSlot4";
             invSlot4.NumericValue = new decimal(new int[] { 0, 0, 0, 0 });
             invSlot4.SelectedItem = null;
             invSlot4.Size = new Size(284, 23);
             invSlot4.TabIndex = 19;
-            invSlot4.ButtonClick += button_selectInv4_Click;
+            invSlot4.ButtonEquipClick += button_selectInv4_Click;
+            invSlot4.ButtonUpClick += swapSlots3and4;
+            invSlot4.ButtonDownClick += swapSlots4and5;
             invSlot4.ValueChanged += invSlot4_ValueChanged;
             invSlot4.SelectedIndexChanged += inv4_SelectedIndexChanged;
+            invSlot4.Enter += invSlot4_Enter;
             // 
             // invSlot1
             // 
             invSlot1.LabelText = "/ 00";
-            invSlot1.Location = new Point(6, 72);
+            invSlot1.Location = new Point(6, 123);
             invSlot1.Name = "invSlot1";
             invSlot1.NumericValue = new decimal(new int[] { 0, 0, 0, 0 });
             invSlot1.SelectedItem = null;
             invSlot1.Size = new Size(284, 23);
             invSlot1.TabIndex = 16;
-            invSlot1.ButtonClick += button_selectInv1_Click;
+            invSlot1.ButtonEquipClick += button_selectInv1_Click;
+            invSlot1.ButtonUpClick += swapSlots5and1;
+            invSlot1.ButtonDownClick += swapSlots1and2;
             invSlot1.ValueChanged += invSlot1_ValueChanged;
             invSlot1.SelectedIndexChanged += inv1_SelectedIndexChanged;
+            invSlot1.Enter += invSlot1_Enter;
             // 
             // textBox_selectedItemDesc
             // 
-            textBox_selectedItemDesc.Location = new Point(7, 18);
+            textBox_selectedItemDesc.Location = new Point(6, 17);
             textBox_selectedItemDesc.Multiline = true;
             textBox_selectedItemDesc.Name = "textBox_selectedItemDesc";
             textBox_selectedItemDesc.ReadOnly = true;
-            textBox_selectedItemDesc.Size = new Size(286, 48);
+            textBox_selectedItemDesc.Size = new Size(286, 100);
             textBox_selectedItemDesc.TabIndex = 10;
             // 
             // button_levelUp
@@ -871,5 +887,6 @@
         private Controls.InventorySlot invSlot5;
         private Controls.InventorySlot invSlot3;
         private Controls.InventorySlot invSlot2;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }

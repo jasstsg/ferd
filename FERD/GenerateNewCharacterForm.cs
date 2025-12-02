@@ -81,12 +81,12 @@ namespace FERD
                 MessageBox.Show("Please select the your tier 1 class promotion before continuing");
                 return false;
             }
-            else if (comboBox_class2.IsClassSetToNull() && c.Level > Classes.PromotionLevel.TIER2)
+            else if (comboBox_class2.IsClassSetToNull() && c.Level >= Classes.PromotionLevel.TIER2)
             {
                 MessageBox.Show("Please select the your tier 2 class promotion before continuing");
                 return false;
             }
-            else if (comboBox_class3.IsClassSetToNull() && c.Level > Classes.PromotionLevel.TIER3)
+            else if (comboBox_class3.IsClassSetToNull() && c.Level >= Classes.PromotionLevel.TIER3)
             {
                 MessageBox.Show("Please select the your tier 3 class promotion before continuing");
                 return false;

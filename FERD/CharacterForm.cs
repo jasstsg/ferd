@@ -22,6 +22,7 @@ namespace FERD
             setToolTips();
             pictureBox_portrait.Image = c.Portrait;
         }
+
         private void setToolTips()
         {
             label_hp.setHpToolTip();
@@ -156,10 +157,18 @@ namespace FERD
             f.Show();
         }
 
+        private async Task AutoSaveMessage()
+        {
+            this.Text = "Auto saving changes...";
+            await Task.Delay(1000);
+            this.Text = "";
+        }
+
         private void numberBox_exp_ValueChanged(object sender, EventArgs e)
         {
             _character.Experience = (int)numberBox_exp.Value;
-            FileHelper.save(_character);
+            _character.save();
+            AutoSaveMessage();
 
             initLevelUpButton();
         }
@@ -185,16 +194,34 @@ namespace FERD
             }
 
             // Higlight selected slot
-            selectedInvSlot.DisplaySelected();
+            selectedInvSlot.DisplayEquipped();
+
+            // Highlight combat stats when a weapon is equipped
+            if (!_character.EquippedItem.IsEmpty && _character.IsEquippedWeaponAllowed)
+            {
+                table_combatStats.BackColor = selectedInvSlot.BackColor;
+            }
 
             // Set description
-            textBox_selectedItemDesc.Text =
-                $"{_character.EquippedItem.Name}" +
-                (!string.IsNullOrEmpty(_character.EquippedItem.Rank) ? $", Rank : {_character.EquippedItem.Rank}" : "") +
-                $", Range: {_character.EquippedItem.Range}" +
-                $"{Environment.NewLine}{_character.EquippedItem.Effects}";
+            updateFocusedItemDesc(slotNum);
 
             initCombatStats();
+        }
+
+        private void updateFocusedItemDesc(int slotNum)
+        {
+            InventorySlot slot = InventorySlots[slotNum - 1];
+            Item focusedItem = slot.GetSelectedItem();
+
+            textBox_selectedItemDesc.Text = focusedItem.IsEmpty ? "" :
+               $"Name:\t{focusedItem.Name}" +
+               $"{Environment.NewLine}Type:\t{focusedItem.Type}" +
+               $"{Environment.NewLine}Rank:\t{focusedItem.Rank}" +
+               $"{Environment.NewLine}Range:\t{focusedItem.Range}" +
+               $"{Environment.NewLine}{focusedItem.Effects}";
+
+            textBox_selectedItemDesc.BackColor = slot.BackColor.Name.Equals("Transparent") ?
+                SystemColors.Control : slot.BackColor;
         }
 
         private void onItemChanged(int slotNum)
@@ -217,7 +244,8 @@ namespace FERD
 
             // Update character inventory data
             _character.Inventory[slotNum].Set(InventorySlots[slotNum - 1]);
-            FileHelper.save(_character);
+            _character.save();
+            AutoSaveMessage();
 
             // Determine display behaviour for this slot
             slot.SetDisplay(_character);
@@ -226,7 +254,9 @@ namespace FERD
         private void OnValueChanged(int slotNum)
         {
             _character.Inventory[slotNum].Uses = (int)InventorySlots[slotNum - 1].NumberBox.Value;
-            FileHelper.save(_character);
+            updateFocusedItemDesc(slotNum);
+            _character.save();
+            AutoSaveMessage();
         }
 
         private void button_selectInv1_Click(object sender, EventArgs e)
@@ -294,6 +324,7 @@ namespace FERD
                         _character.Portrait = newPortrait;
                         pictureBox_portrait.Image = newPortrait;
                         _character.save();
+                        AutoSaveMessage();
                     }
                     catch (Exception ex)
                     {
@@ -326,6 +357,56 @@ namespace FERD
         private void invSlot5_ValueChanged(object sender, EventArgs e)
         {
             OnValueChanged(5);
+        }
+
+        private void invSlot1_Enter(object sender, EventArgs e)
+        {
+            updateFocusedItemDesc(1);
+        }
+
+        private void invSlot2_Enter(object sender, EventArgs e)
+        {
+            updateFocusedItemDesc(2);
+        }
+
+        private void invSlot3_Enter(object sender, EventArgs e)
+        {
+            updateFocusedItemDesc(3);
+        }
+
+        private void invSlot4_Enter(object sender, EventArgs e)
+        {
+            updateFocusedItemDesc(4);
+        }
+
+        private void invSlot5_Enter(object sender, EventArgs e)
+        {
+            updateFocusedItemDesc(5);
+        }
+
+        private void swapSlots1and2(object sender, EventArgs e)
+        {
+            InventorySlots[0].SwapWith(InventorySlots[1]);
+        }
+
+        private void swapSlots2and3(object sender, EventArgs e)
+        {
+            InventorySlots[1].SwapWith(InventorySlots[2]);
+        }
+
+        private void swapSlots3and4(object sender, EventArgs e)
+        {
+            InventorySlots[2].SwapWith(InventorySlots[3]);
+        }
+
+        private void swapSlots4and5(object sender, EventArgs e)
+        {
+            InventorySlots[3].SwapWith(InventorySlots[4]);
+        }
+
+        private void swapSlots5and1(object sender, EventArgs e)
+        {
+            InventorySlots[4].SwapWith(InventorySlots[0]);
         }
     }
 }

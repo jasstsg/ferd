@@ -58,9 +58,21 @@ namespace FERD.Helpers
             slot.BackColor = allowed ? Color.LightBlue : Color.DarkGray;
         }
 
-        public static void DisplaySelected(this InventorySlot slot)
+        public static void DisplayEquipped(this InventorySlot slot)
         {
             slot.BackColor = Color.LightGreen;
+        }
+
+        public static void SwapWith(this InventorySlot thisSlot, InventorySlot thatSlot)
+        {
+            Item thisItem = thisSlot.GetSelectedItem();
+            int thisUses = (int)thisSlot.NumberBox.Value;
+
+            Item thatItem = thatSlot.GetSelectedItem();
+            int thatUses = (int)thatSlot.NumberBox.Value;
+
+            thisSlot.SetSelectedItem(thatItem.Name, thatUses);
+            thatSlot.SetSelectedItem(thisItem.Name, thisUses);
         }
     }
 }

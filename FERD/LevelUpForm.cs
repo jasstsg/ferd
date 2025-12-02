@@ -39,13 +39,13 @@ namespace FERD
             label_levelUpText.Text = $"Level {_character.Level} -> {_character.Level + 1} ";
             _character.initClassDropdowns(comboBox_class1, comboBox_class2, comboBox_class3);
 
-            if (_character.Level == Classes.PromotionLevel.TIER2)
+            if (_character.Level == Classes.PromotionLevel.TIER2 - 1)
             {
                 comboBox_class2.Enabled = true;
                 comboBox_class2.ForeColor = Color.Black;
                 label_levelUpText.Text += "and promote to tier 2";
             }
-            else if (_character.Level == Classes.PromotionLevel.TIER3)
+            else if (_character.Level == Classes.PromotionLevel.TIER3 - 1)
             {
                 comboBox_class3.Enabled = true;
                 comboBox_class3.ForeColor = Color.Black;
@@ -95,7 +95,7 @@ namespace FERD
         }
         private void comboBox_class2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (_character.Level == Classes.PromotionLevel.TIER2)
+            if (_character.Level == Classes.PromotionLevel.TIER2 - 1)
             {
                 textBox_classDescription.Text = comboBox_class2.GetSelectedClass().Description;
             }
@@ -103,7 +103,7 @@ namespace FERD
 
         private void comboBox_class3_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (_character.Level == Classes.PromotionLevel.TIER3)
+            if (_character.Level == Classes.PromotionLevel.TIER3 - 1)
             {
                 textBox_classDescription.Text = comboBox_class3.GetSelectedClass().Description;
             }

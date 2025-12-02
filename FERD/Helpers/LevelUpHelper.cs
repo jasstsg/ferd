@@ -53,12 +53,12 @@ namespace FERD.Helpers
 
             for (int level = fromLevel; level < toLevel; level++)
             {
-                if (temp.Class2.Equals(Classes.Empty) && level >= Classes.PromotionLevel.TIER2 + 1)
+                if (temp.Class2.Equals(Classes.Empty) && level >= Classes.PromotionLevel.TIER2)
                 {
                     temp.Class2 = c.Class2;
                     temp.recalculateGrowthRates();
                 }
-                else if (temp.Class3.Equals(Classes.Empty) && level >= Classes.PromotionLevel.TIER3 + 1)
+                else if (temp.Class3.Equals(Classes.Empty) && level >= Classes.PromotionLevel.TIER3)
                 {
                     temp.Class3 = c.Class3;
                     temp.recalculateGrowthRates();

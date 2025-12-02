@@ -4,7 +4,9 @@ namespace FERD.Controls
     public partial class InventorySlot : UserControl
     {
         public ComboBox Dropdown => _dropdown;
-        public Button Button => _button;
+        public Button ButtonEquip => _buttonEquip;
+        public Button ButtonUp => _buttonUp;
+        public Button ButtonDown => _buttonDown;
         public NumericUpDown NumberBox => _numberBox;
         public Label Label => _label;
 
@@ -44,11 +46,27 @@ namespace FERD.Controls
         // ----- Events -----
 
         [Category("Action")]
-        [Description("Occurs when the button is clicked.")]
-        public event EventHandler ButtonClick
+        [Description("Occurs when the equip button is clicked.")]
+        public event EventHandler ButtonEquipClick
         {
-            add => Button.Click += value;
-            remove => Button.Click -= value;
+            add => ButtonEquip.Click += value;
+            remove => ButtonEquip.Click -= value;
+        }
+
+        [Category("Action")]
+        [Description("Occurs when the up button is clicked.")]
+        public event EventHandler ButtonUpClick
+        {
+            add => ButtonUp.Click += value;
+            remove => ButtonUp.Click -= value;
+        }
+
+        [Category("Action")]
+        [Description("Occurs when the down button is clicked.")]
+        public event EventHandler ButtonDownClick
+        {
+            add => ButtonDown.Click += value;
+            remove => ButtonDown.Click -= value;
         }
 
         [Category("Action")]

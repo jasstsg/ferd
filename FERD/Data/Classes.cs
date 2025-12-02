@@ -7,7 +7,7 @@ namespace FERD.Data
     {
         public static class PromotionLevel
         {
-            public static int TIER2 = 4;
+            public static int TIER2 = 5;
             public static int TIER3 = 20;
         }
 
